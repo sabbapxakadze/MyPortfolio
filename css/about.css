@@ -1,0 +1,63 @@
+.about-section{
+  position: relative;
+  width: 100%;
+  overflow: hidden; 
+  padding: 40px;
+  z-index: 0;
+}
+
+.about-header {
+    position: relative;  
+    z-index: 1;
+    text-align: center;
+    
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+/* About  dContent */
+.about-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto; /* Center  content horizontally */
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: rgba(136, 165, 191, 1) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+/* Header Style */
+.about-content header {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--main-color); 
+}
+
+/* Paragraph Style */
+.about-content .about-p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: justify; /* Justify text for a clean look */
+}
+
+
+
+@media (max-width: 768px) {
+  /*About Section*/
+ .about-content {
+    padding: 15px;
+  }
+  
+  .about-content header {
+    font-size: 2rem;
+  }
+  
+  .about-content .about-p {
+    font-size: 1rem;
+  }
+}

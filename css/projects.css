@@ -1,0 +1,149 @@
+.projects-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden; 
+    padding: 40px;
+    z-index: 1;
+}
+
+.projects-header {
+    position: relative; 
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+/* Carousel Container */
+.carousel {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 30px 100px;
+    background: rgba(51, 51, 51, 0.114);
+    
+}
+
+.carousel-item h2 {
+    font-family: system-ui, -apple-system;
+    font-weight: bold;
+    font-size: 30px;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.carousel-item p {
+    font-family: system-ui, -apple-system;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--third-color);
+    text-align: center;
+}
+
+.technologies-text {
+    font-size: 15px !important;
+    color: var(--main-color) !important;
+}
+
+/* Carousel Controls */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.229); /* Slightly darker background */
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Circular buttons */
+    font-size: 18px; /* Larger arrow icons */
+    z-index: 1;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.carousel-control.prev {
+    left: 10px; /* Adjust for better positioning */
+}
+
+.carousel-control.next {
+    right: 10px; /* Adjust for better positioning */
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+}
+
+.carousel-control:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.carousel-control::before {
+    content: ''; /* Ensure button has content */
+    font-family: Arial, sans-serif; /* Ensure proper font */
+}
+
+.carousel-control.prev::before {
+    content: '◄'; /* Left arrow */
+}
+
+.carousel-control.next::before {
+    content: '►'; /* Right  arrow */
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(63, 63, 63, 0.51);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+    .projects-header {
+        font-size: 2rem;
+    }
+
+    .carousel-item p {
+        font-size: 1rem;
+    }
+
+    .carousel-item h3 .technologies-text {
+        
+        font-size: 8px !important;
+    }
+    .technologies-text {
+        font-size: 10px !important;
+    }
+}

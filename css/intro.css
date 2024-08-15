@@ -1,0 +1,111 @@
+/* First Page */
+
+.first-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevents particles from overflowing */
+  }
+
+.Intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1; 
+    color: var(--secondary-color);
+    font-size: 28px;
+    background: rgba(52, 51, 51, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 1.8rem;
+}
+
+/* Animation for typing effect and zoom-in effect */
+.Intro h1 {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.15em solid var(--secondary-color);
+  animation: typingEffect 3s steps(30, end) forwards, blinkCaret 0.75s step-end infinite;
+}
+
+.Intro h3 {
+  transform: scale(0.8);
+  opacity: 0;
+  animation: zoomInEffect 2s ease-out forwards, colorChangeEffect 5s ease-in-out infinite;
+}
+
+/* Keyframes for typing effect */
+@keyframes typingEffect {
+  from { 
+      width: 0;
+  }
+  to { 
+      width: 100%;
+  }
+}
+
+/* Keyframe for blinking caret */
+@keyframes blinkCaret {
+  from, to {
+      border-color: transparent;
+  }
+  50% {
+      border-color: var(--secondary-color);
+  }
+}
+
+/* Keyframes for zoom-in effect */
+@keyframes zoomInEffect {
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+
+
+  
+.contact-btn {
+      background-color: var(--main-color);
+      border: none;
+      border-radius: 20px;
+      padding: 15px 30px;
+      font-size: 20px;
+      text-align: center;
+      color: var(--secondary-color);
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: var(--main-color) 0px 5px 15px 0px;
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+  
+.contact-btn:hover {
+      transform: scale(1.1);
+      background-color: var(--secondary-color);
+      color: var(--third-color);
+      box-shadow: rgba(0, 0, 0, 0.8) 0px 22px 70px 4px;
+}
+
+@media (max-width: 768px) {
+  .Intro lang-en {
+    font-size: 2rem;
+  }
+  .contact-btn lang-en {
+    font-size: 1.5rem;
+  }
+
+  .Intro .lang-ge {
+    font-size: 1rem;
+  }
+
+  .Intro h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+  .Intro h3 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
