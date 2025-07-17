@@ -19,6 +19,11 @@ import {
   Sparkles,
   ArrowDown
 } from "lucide-react";
+import { ProjectCarousel } from "./ProjectCarousel";
+import { CombinedTerminalSkills } from "./CombinedTerminalSkills";
+import { EducationTimeline } from "./EducationTimeline";
+import { WorkExperience } from "./WorkExperience";
+import { ContactSection } from "./ContactSection";
 
 // Portfolio content data
 const content = {
@@ -62,27 +67,39 @@ const content = {
     title: "Featured Projects",
     items: [
       {
-        name: "eCommerce Web Application",
+        title: "GrindersFX Trading Portfolio",
+        description: "On freelance, I developed a comprehensive trading portfolio website for GrindersFX, a professional trading platform. Built a modern, responsive interface to showcase trading strategies, performance metrics, and portfolio analytics.",
+        technologies: ["TypeScript", "React", "TailwindCSS", "Chart.js", "Responsive Design"],
+        type: "Freelance Project",
+        link: "#",
+        github: "#"
+      },
+      {
+        title: "eCommerce Web Application",
         description: "Designed, developed, and thoroughly tested a full-stack eCommerce platform using ASP.NET Core Web API and React. Implemented secure user authentication with JWT, integrated PayPal for payment processing, and built a responsive frontend for seamless user experience.",
         technologies: ["C#", "ASP.NET Core Web API", "React", "PostgreSQL", "JWT", "PayPal API", "Postman"],
+        type: "Full-Stack Project",
         link: "#"
       },
       {
-        name: "Video-Platform",
+        title: "Video-Platform",
         description: "Developed and thoroughly tested a custom video-sharing platform using ASP.NET, enabling users to watch and interact with uploaded content. Gained hands-on experience in backend development and web technologies.",
         technologies: ["C#", "ASP.NET Core Web API", "PostgreSQL", "React", "Postman"],
+        type: "Web Application",
         link: "#"
       },
       {
-        name: "Blogs-Application",
+        title: "Blogs-Application",
         description: "Built a dynamic blog platform using ASP.NET that features user authentication, complete post management (CRUD operations), and interactive content sharing capabilities. Tested thoroughly using Swagger.",
         technologies: ["C#", "ASP.NET MVC", "MSSQL"],
+        type: "Web Application",
         link: "#"
       },
       {
-        name: "MyPostman (Clone of Postman Application)",
+        title: "MyPostman (Clone of Postman Application)",
         description: "MyPostman app provides a user-friendly interface for making HTTP requests to APIs and viewing the responses in a formatted JSON. Ideal for developers and testers, this tool simplifies API interaction and debugging, helping you to efficiently validate and troubleshoot your API calls.",
         technologies: ["C#", ".NET 8", "HTTPClient", "WinForms", "JWT Auth"],
+        type: "Desktop Application",
         link: "#"
       }
     ]
@@ -93,16 +110,24 @@ const content = {
       {
         institution: "Kutaisi International University (KIU)",
         degree: "Bachelor of Computer Science",
-        period: "2023 - Present",
-        gpa: "GPA: 3.4/4.0",
-        coursework: "Data Structures & Algorithms, Theory of Computation, Computer Architecture, Database Systems, Operating Systems, Management, Software Engineering, Web Development, Principles of Programming Languages, Calculus, Linear Algebra, Scripting Languages."
+        field: "Computer Science",
+        startDate: "2023",
+        endDate: "Present",
+        location: "Kutaisi, Georgia",
+        type: "university" as const,
+        description: "Pursuing a comprehensive Computer Science education with focus on software engineering, algorithms, and system design. Maintaining a strong academic performance while building practical development skills.",
+        skills: ["Data Structures & Algorithms", "Theory of Computation", "Computer Architecture", "Database Systems", "Operating Systems", "Management", "Software Engineering", "Web Development", "Principles of Programming Languages", "Calculus", "Linear Algebra", "Scripting Languages", "GPA: 3.4/4.0"]
       },
       {
         institution: "TBC IT Academy",
         degree: ".NET Back-End Development",
-        period: "2024-2025",
-        gpa: "",
-        coursework: "C#, ASP.NET Core, Entity Framework Core, Web API, SQL Server, Authentication & Authorization, JWT, Clean Architecture, Onion Architecture, MediatR, Repository Pattern, Dependency Injection, Git, MVC, RESTful API Design."
+        field: "Backend Development",
+        startDate: "2024",
+        endDate: "2025",
+        location: "Tbilisi, Georgia",
+        type: "course" as const,
+        description: "Intensive backend development bootcamp focusing on .NET technologies and modern development practices.",
+        skills: ["C#", "ASP.NET Core", "Entity Framework Core", "Web API", "SQL Server", "Authentication & Authorization", "JWT", "Clean Architecture", "Onion Architecture", "MediatR", "Repository Pattern", "Dependency Injection", "Git", "MVC", "RESTful API Design"]
       }
     ]
   },
@@ -130,12 +155,17 @@ const content = {
 };
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true); // Default to dark mode
 
   const toggleTheme = () => {
     setIsDark(!isDark);
     document.documentElement.classList.toggle('dark');
   };
+
+  // Set dark mode as default on initial load
+  useState(() => {
+    document.documentElement.classList.add('dark');
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -143,8 +173,7 @@ export default function Portfolio() {
       <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-lg border-b border-border z-50 transition-smooth">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="font-bold text-xl text-gradient flex items-center">
-              <Sparkles className="mr-2 h-6 w-6" />
+            <div className="font-bold text-xl text-gradient">
               SP
             </div>
             
@@ -181,7 +210,7 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 hero-bg overflow-hidden">
+      <section className="relative pt-52 pb-20 px-4 sm:px-6 lg:px-8 hero-bg overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center animate-fade-in">
             <div className="mb-6">
@@ -220,6 +249,15 @@ export default function Portfolio() {
                 variant="outline" 
                 size="lg"
                 className="hover:scale-105 transition-bounce px-8 py-3 text-lg border-2"
+                onClick={() => {
+                  // Create a dummy CV download
+                  const link = document.createElement('a');
+                  link.href = '/cv-saba-pkhakadze.pdf'; // You should add an actual CV file to public folder
+                  link.download = 'Saba_Pkhakadze_CV.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
                 <Download className="mr-2 h-5 w-5" />
                 {content.hero.downloadCV}
@@ -246,35 +284,10 @@ export default function Portfolio() {
             </p>
             
             <div className="pt-8 border-t border-border">
-              <div className="grid md:grid-cols-2 gap-10">
-                <div>
-                  <h3 className="text-xl font-semibold mb-6 text-foreground flex items-center">
-                    <Sparkles className="mr-2 h-5 w-5 text-primary" />
-                    {content.skills.soft.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {content.skills.soft.items.map((skill, index) => (
-                      <Badge key={index} variant="secondary" className="transition-smooth hover:scale-105 px-3 py-1">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-semibold mb-6 text-foreground flex items-center">
-                    <Code className="mr-2 h-5 w-5 text-primary" />
-                    {content.skills.tech.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {content.skills.tech.items.map((skill, index) => (
-                      <Badge key={index} variant="default" className="transition-smooth hover:scale-105 px-3 py-1">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <CombinedTerminalSkills 
+                technicalSkills={content.skills.tech.items.map(item => ({ name: item, level: 'Advanced', category: 'technical' as const }))}
+                softSkills={content.skills.soft.items.map(item => ({ name: item, level: 'Expert', category: 'soft' as const }))}
+              />
             </div>
           </Card>
         </div>
@@ -287,26 +300,7 @@ export default function Portfolio() {
             {content.experience.title}
           </h2>
           
-          <div className="space-y-8">
-            {content.experience.jobs.map((job, index) => (
-              <Card key={index} className="p-8 card-gradient card-shadow hover:scale-105 transition-bounce border-0 group">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-semibold text-foreground flex items-center mb-2">
-                      <Briefcase className="mr-3 h-6 w-6 text-primary group-hover:animate-float" />
-                      {job.position}
-                    </h3>
-                    <p className="text-xl text-primary font-medium">{job.company}</p>
-                  </div>
-                  <div className="flex items-center text-muted-foreground mt-2 md:mt-0">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    {job.period}
-                  </div>
-                </div>
-                <p className="text-muted-foreground leading-relaxed text-lg">{job.description}</p>
-              </Card>
-            ))}
-          </div>
+          <WorkExperience jobs={content.experience.jobs} />
         </div>
       </section>
 
@@ -317,40 +311,7 @@ export default function Portfolio() {
             {content.projects.title}
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            {content.projects.items.map((project, index) => (
-              <Card key={index} className="p-8 card-gradient card-shadow hover:scale-105 transition-bounce group border-0 h-full">
-                <div className="flex items-start justify-between mb-6">
-                  <h3 className="text-xl font-semibold text-foreground flex items-center">
-                    <Code className="mr-3 h-6 w-6 text-primary group-hover:animate-float" />
-                    {project.name}
-                  </h3>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="opacity-0 group-hover:opacity-100 transition-smooth"
-                    asChild
-                  >
-                    <a href={project.link}>
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  </Button>
-                </div>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="outline" className="transition-smooth hover:scale-105">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
+          <ProjectCarousel projects={content.projects.items} />
         </div>
       </section>
 
@@ -361,89 +322,18 @@ export default function Portfolio() {
             {content.education.title}
           </h2>
           
-          <div className="space-y-8">
-            {content.education.items.map((edu, index) => (
-              <Card key={index} className="p-8 card-gradient card-shadow hover:scale-105 transition-bounce border-0 group">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-semibold text-foreground flex items-center mb-2">
-                      <GraduationCap className="mr-3 h-6 w-6 text-primary group-hover:animate-float" />
-                      {edu.degree}
-                    </h3>
-                    <p className="text-xl text-primary font-medium">{edu.institution}</p>
-                    {edu.gpa && <p className="text-muted-foreground mt-1">{edu.gpa}</p>}
-                  </div>
-                  <div className="flex items-center text-muted-foreground mt-2 md:mt-0">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    {edu.period}
-                  </div>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  <strong>Related Coursework:</strong> {edu.coursework}
-                </p>
-              </Card>
-            ))}
-          </div>
+          <EducationTimeline education={content.education.items} />
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-            {content.contact.title}
-          </h2>
-          <p className="text-xl text-muted-foreground mb-16">
-            {content.contact.subtitle}
-          </p>
-          
-          <Card className="p-10 card-gradient card-shadow border-0">
-            <div className="grid md:grid-cols-3 gap-10 mb-10">
-              <a 
-                href={`mailto:${content.contact.info.email}`}
-                className="flex flex-col items-center p-6 rounded-lg hover:scale-105 transition-bounce group"
-              >
-                <Mail className="h-10 w-10 text-primary mb-4 group-hover:animate-float" />
-                <h3 className="font-semibold text-foreground mb-2 text-lg">Email</h3>
-                <p className="text-muted-foreground">{content.contact.info.email}</p>
-              </a>
-              
-              <a 
-                href={`tel:${content.contact.info.phone}`}
-                className="flex flex-col items-center p-6 rounded-lg hover:scale-105 transition-bounce group"
-              >
-                <Phone className="h-10 w-10 text-primary mb-4 group-hover:animate-float" />
-                <h3 className="font-semibold text-foreground mb-2 text-lg">Phone</h3>
-                <p className="text-muted-foreground">{content.contact.info.phone}</p>
-              </a>
-              
-              <div className="flex flex-col items-center p-6 rounded-lg group">
-                <MapPin className="h-10 w-10 text-primary mb-4 group-hover:animate-float" />
-                <h3 className="font-semibold text-foreground mb-2 text-lg">Location</h3>
-                <p className="text-muted-foreground">{content.contact.info.location}</p>
-              </div>
-            </div>
-            
-            <div className="pt-8 border-t border-border">
-              <div className="flex justify-center space-x-6 mb-8">
-                <Button variant="ghost" size="lg" className="hover:scale-110 transition-bounce" asChild>
-                  <a href="https://linkedin.com/in/saba-pkhakadze" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="h-8 w-8" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="lg" className="hover:scale-110 transition-bounce" asChild>
-                  <a href="https://github.com/sabbapxakadze" target="_blank" rel="noopener noreferrer">
-                    <Github className="h-8 w-8" />
-                  </a>
-                </Button>
-              </div>
-              
-              <p className="text-muted-foreground">
-                {content.languages}
-              </p>
-            </div>
-          </Card>
-        </div>
+        <ContactSection 
+          title={content.contact.title}
+          subtitle={content.contact.subtitle}
+          info={content.contact.info}
+          languages={content.languages}
+        />
       </section>
 
       {/* Footer */}
