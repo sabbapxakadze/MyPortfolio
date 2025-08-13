@@ -351,18 +351,12 @@ export default function Portfolio() {
                 variant="outline"
                 size="lg"
                 className="hover:scale-105 transition-bounce px-8 py-3 text-lg border-2"
-                onClick={() => {
-                  // Create a dummy CV download
-                  const link = document.createElement("a");
-                  link.href = "/CV.pdf";
-                  link.download = "CV.pdf";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
+                asChild
               >
-                <Download className="mr-2 h-5 w-5" />
-                {content.hero.downloadCV}
+                <a href="/MyPortfolio/CV.pdf" download>
+                  <Download className="mr-2 h-5 w-5" />
+                  {content.hero.downloadCV}
+                </a>
               </Button>
             </div>
 
