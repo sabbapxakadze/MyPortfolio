@@ -12,12 +12,19 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
+        <p className="font-mono text-primary">404</p>
+        <h1 className="mt-2 text-4xl font-bold sm:text-5xl">Page not found</h1>
+        <p className="mt-4 font-mono text-muted-foreground">
+          <span className="text-primary">$</span> cd {location.pathname}{" "}
+          <span className="text-destructive">— no such file or directory</span>
+        </p>
+        <a
+          href="/"
+          className="mt-8 inline-flex items-center gap-2 rounded-md border border-primary/40 px-6 py-3 font-mono text-primary transition-colors hover:bg-primary/10"
+        >
+          cd ~/home
         </a>
       </div>
     </div>
