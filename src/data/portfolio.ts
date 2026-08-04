@@ -12,7 +12,8 @@ export const profile = {
   location: "Kutaisi, Georgia",
   email: "phkhakadze.saba49@gmail.com",
   phone: "+995 591 91 72 97",
-  resumeUrl: "/CV.pdf",
+  // Resolves under the Vite base path (e.g. /MyPortfolio/CV.pdf in production).
+  resumeUrl: `${import.meta.env.BASE_URL}CV.pdf`,
   available: true,
   socials: {
     // TODO: confirm the GitHub URL — currently a best guess.
