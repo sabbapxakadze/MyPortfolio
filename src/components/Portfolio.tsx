@@ -353,7 +353,7 @@ export default function Portfolio() {
                 className="hover:scale-105 transition-bounce px-8 py-3 text-lg border-2"
                 asChild
               >
-                <a href="/MyPortfolio/CV.pdf" download>
+                <a href="/CV.pdf" download>
                   <Download className="mr-2 h-5 w-5" />
                   {content.hero.downloadCV}
                 </a>
