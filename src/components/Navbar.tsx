@@ -68,7 +68,7 @@ export function Navbar() {
             download
             className="hidden rounded-md border border-primary/40 px-3 py-2 font-mono text-sm text-primary transition-colors hover:bg-primary/10 sm:inline-block"
           >
-            resume
+            Resume
           </a>
           <ThemeToggle />
           <button

@@ -27,7 +27,7 @@ export const about = {
   // A few short paragraphs. Keep it human.
   paragraphs: [
     "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack — designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
-    "At BeneNAV I ship features across an employee-management platform and its backend API, build shared TypeScript packages and Storybook components, and integrate real-time services. Alongside that I work as a QA Engineer, which keeps me obsessive about edge cases and reliability.",
+    "At BeneNAV I ship features across an employee-management platform and its backend API, build shared TypeScript packages and Storybook components, and integrate real-time services. At DevsData LLC I work across the frontend and backend of production applications, building internal tools and automations and tracing issues across the full stack.",
   ],
 };
 
@@ -44,7 +44,7 @@ export const experience: Experience[] = [
   {
     company: "BeneNAV",
     role: "Full-Stack Engineer",
-    period: "Nov 2025 — Present",
+    period: "Nov 2024 — Present",
     current: true,
     stack: [
       "React",
@@ -57,25 +57,26 @@ export const experience: Experience[] = [
       "Storybook",
     ],
     highlights: [
-      "Develop and maintain features across the company's HR / employee-management dashboard (React, MUI, Redux Toolkit) and its backend API (Node.js, Express, TypeScript, MongoDB), fixing bugs across both the UI and the data layer.",
-      "Built and published an internal shared TypeScript models package consumed by both the frontend and backend, keeping data types consistent across the codebase and reducing duplication.",
-      "Designed reusable components for the Storybook-based UI library, translating Figma designs into production-ready, cross-platform components.",
-      "Integrated real-time messaging and notifications via an Elixir/Phoenix-based chat service.",
+      "Develop and maintain features across the company's HR / employee-management dashboard (React, MUI, Redux Toolkit) and its backend API (Node.js, Express, TypeScript, MongoDB), resolving bugs across both the frontend and the data layer.",
+      "Built and published an internal shared TypeScript models package consumed by both the frontend dashboard and backend API, keeping data types consistent across the fullstack codebase and reducing duplication.",
+      "Designed and developed reusable components for the company's Storybook-based UI component library, translating Figma designs into production-ready, cross-platform components.",
+      "Integrated real-time features using an Elixir/Phoenix-based chat service for live messaging/notifications.",
       "Diagnosed and fixed bugs on the company's marketing site (React, Vite, TypeScript, Tailwind CSS), improving stability and UX.",
     ],
   },
   {
     company: "DevsData",
-    role: "QA Engineer",
-    period: "Jan 2025 — Present",
+    role: "Fullstack Developer",
+    period: "Jan 2024 — Present",
     current: true,
-    stack: ["Manual Testing", "API Testing", "Postman", "Git / GitLab", "Trello"],
+    stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Git / GitLab"],
     highlights: [
-      "Execute comprehensive manual and exploratory testing across frontend and backend systems, identifying and documenting critical bugs that improved application stability.",
-      "Design detailed test cases covering edge cases and user workflows, ensuring 95%+ test coverage for new features.",
-      "Collaborate with the development team through Agile ceremonies to prioritize and resolve 50+ issues monthly.",
-      "Perform API testing with Postman, validating request/response patterns and authentication flows.",
-      "Run cross-browser and cross-device testing across Chrome, Firefox, Safari, and Edge.",
+      "Executed end-to-end development across frontend and backend, delivering features, integrations, and improvements for production applications.",
+      "Designed and implemented internal tools and server-side automations for data transformation and validation, reducing a 2–3 hour manual process to a quick check.",
+      "Worked across multiple application layers, tracing issues from React UI behavior through API requests and backend logic to identify and fix root causes.",
+      "Develop and refactor reusable React/TypeScript components, improving maintainability and consistency across high-traffic pages.",
+      "Debugged and resolved frontend, backend, and API issues, using systematic testing and investigation to identify root causes and prevent regressions.",
+      "Worked with Node.js, Express, MongoDB, Git/GitLab, and third-party APIs while managing changes through staging, code reviews, and production deployments.",
     ],
   },
 ];
@@ -90,39 +91,25 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "GrindersFX Trading Portfolio",
-    blurb:
-      "Freelance build of a modern, responsive trading-portfolio site showcasing strategies, performance metrics, and analytics with interactive charts.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-    tag: "Freelance",
-  },
-  {
     title: "eCommerce Web Application",
     blurb:
-      "Full-stack store with product catalog, shopping cart, and secure checkout. JWT auth, PayPal integration, and a RESTful API with 20+ endpoints, backed by a responsive React frontend with real-time cart updates.",
-    stack: ["C#", "ASP.NET Core", "React", "PostgreSQL", "JWT", "PayPal API"],
+      "Full-stack platform with product catalog, shopping cart, and secure checkout functionality. Implemented JWT authentication, PayPal payment integration, and a comprehensive RESTful API with 20+ endpoints, backed by a responsive React frontend with real-time cart updates and optimized database queries.",
+    stack: ["C#", "ASP.NET Core Web API", "React", "PostgreSQL", "JWT", "PayPal API", "Postman"],
     tag: "Full-Stack",
   },
   {
     title: "Video-Platform",
     blurb:
-      "Video-sharing platform with upload, streaming, and engagement features (comments, likes). Scalable backend API handling video metadata and user interactions over optimized PostgreSQL queries.",
-    stack: ["C#", "ASP.NET Core", "PostgreSQL", "React", "Postman"],
+      "Video-sharing platform with upload, streaming, and user engagement features (comments, likes). Scalable backend API handling video metadata and user interactions with optimized PostgreSQL queries.",
+    stack: ["C#", "ASP.NET Core Web API", "PostgreSQL", "React", "Postman"],
     tag: "Full-Stack",
   },
   {
-    title: "Blogs-Application",
+    title: "Grinders FX",
     blurb:
-      "Blogging platform with user authentication, full CRUD for posts, and an interactive comment system. MVC architecture with a normalized database design, tested with Swagger.",
-    stack: ["C#", "ASP.NET MVC", "MSSQL"],
-    tag: "Web App",
-  },
-  {
-    title: "MyPostman",
-    blurb:
-      "Desktop API-testing tool (a Postman clone) supporting all HTTP methods with JWT auth and formatted JSON responses, in an intuitive Windows Forms interface with request/response tabs and URL validation.",
-    stack: ["C#", ".NET 8", "HttpClient", "WinForms", "JWT"],
-    tag: "Desktop App",
+      "Crypto-focused landing page and dashboard featuring live market stats, price charts, a TradingView-embedded chart widget, and portfolio/testimonial/pricing sections. Implemented dark/light theme switching and a reusable shadcn/ui + Radix UI component system.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Recharts", "GitHub Actions"],
+    tag: "Freelance",
   },
 ];
 
@@ -163,46 +150,50 @@ export const education: Education[] = [
 
 export const skills: { group: string; items: string[] }[] = [
   {
-    group: "Languages & Frameworks",
+    group: "Technical Skills",
     items: [
-      "C#",
-      "ASP.NET Core",
-      "TypeScript",
-      "JavaScript",
       "React.js",
+      "JavaScript",
+      "TypeScript",
       "Node.js",
       "Express.js",
       "Redux Toolkit",
-      "MUI",
-      "Styled-Components / Emotion",
+      "MUI (Material UI)",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "MongoDB",
+      "C#",
+      "ASP.NET Core",
+      "RESTful API Design",
+      "JWT Authentication",
     ],
   },
   {
-    group: "Data",
-    items: ["PostgreSQL", "MongoDB", "MSSQL", "RESTful API Design", "JWT Auth"],
-  },
-  {
-    group: "Tools",
+    group: "Development Tools",
     items: [
-      "Git / GitHub / GitLab",
+      "GitHub",
+      "GitLab",
+      "CI/CD (GitHub Actions)",
       "Postman",
       "Figma",
       "Storybook",
-      "Vite",
-      "Swagger",
+      "Slack",
       "Notion",
+      "Swagger",
       "Trello",
+      "Visual Studio",
+      "Visual Studio Code",
       "n8n",
     ],
   },
   {
-    group: "Testing & QA",
+    group: "Core Competencies",
     items: [
-      "Manual Testing",
-      "API Testing",
-      "Test Case Design",
-      "Cross-browser Testing",
-      "Bug Tracking",
+      "Data Structures & Algorithms",
+      "Database Design",
+      "Agile/Scrum",
+      "Problem-Solving",
+      "Team Collaboration",
     ],
   },
 ];
