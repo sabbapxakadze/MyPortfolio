@@ -9,7 +9,7 @@ export function Contact() {
         <h2 className="text-3xl font-bold sm:text-4xl">Get in touch</h2>
         <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground">
           I&apos;m open to new opportunities and collaborations. Whether you have
-          a question or just want to say hi, my inbox is always open — I&apos;ll
+          a question or just want to say hi, my inbox is always open – I&apos;ll
           get back to you.
         </p>
 

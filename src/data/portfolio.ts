@@ -8,7 +8,7 @@ export const profile = {
   role: "Full-Stack Engineer",
   // Short line shown under the name in the hero.
   tagline:
-    "I build full-stack web applications — from .NET & Node.js APIs to React frontends.",
+    "I build full-stack web applications – from .NET & Node.js APIs to React frontends.",
   location: "Kutaisi, Georgia",
   email: "phkhakadze.saba49@gmail.com",
   phone: "+995 591 91 72 97",
@@ -25,7 +25,7 @@ export const profile = {
 export const about = {
   // A few short paragraphs. Keep it human.
   paragraphs: [
-    "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack — designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
+    "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack – designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
     "At BeneNAV I ship features across an employee-management platform and its backend API, build shared TypeScript packages and Storybook components, and integrate real-time services. At DevsData LLC I work across the frontend and backend of production applications, building internal tools and automations and tracing issues across the full stack.",
   ],
 };
@@ -43,7 +43,7 @@ export const experience: Experience[] = [
   {
     company: "BeneNAV",
     role: "Full-Stack Engineer",
-    period: "Nov 2024 — Present",
+    period: "Nov 2024 – Present",
     current: true,
     stack: [
       "React",
@@ -66,7 +66,7 @@ export const experience: Experience[] = [
   {
     company: "DevsData",
     role: "Fullstack Developer",
-    period: "Jan 2024 — Present",
+    period: "Jan 2024 – Present",
     current: true,
     stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Git / GitLab"],
     highlights: [
@@ -189,11 +189,11 @@ export const education: Education[] = [
   {
     institution: "Kutaisi International University",
     program: "B.Sc. in Computer Science",
-    period: "2023 — 2027",
+    period: "2023 – 2027",
     detail: "Kutaisi, Georgia",
     highlights: [
-      "Data Structures & Algorithms (Java — 4.0 GPA)",
-      "Database Systems (PostgreSQL — 3.7 GPA)",
+      "Data Structures & Algorithms (Java – 4.0 GPA)",
+      "Database Systems (PostgreSQL – 3.7 GPA)",
       "Software Engineering",
       "Web Development",
       "Computer Architecture",
@@ -202,7 +202,7 @@ export const education: Education[] = [
   {
     institution: "TBC IT Academy",
     program: ".NET Back-End Development",
-    period: "2024 — 2025",
+    period: "2024 – 2025",
     detail: "Intensive bootcamp",
     highlights: [
       "ASP.NET Core & Entity Framework Core",

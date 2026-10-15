@@ -18,7 +18,7 @@ const NotFound = () => {
         <h1 className="mt-2 text-4xl font-bold sm:text-5xl">Page not found</h1>
         <p className="mt-4 font-mono text-muted-foreground">
           <span className="text-primary">$</span> cd {location.pathname}{" "}
-          <span className="text-destructive">— no such file or directory</span>
+          <span className="text-destructive">– no such file or directory</span>
         </p>
         <a
           href="/"
