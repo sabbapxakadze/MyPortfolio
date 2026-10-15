@@ -82,33 +82,98 @@ export const experience: Experience[] = [
 
 export type Project = {
   title: string;
-  blurb: string;
-  stack: string[];
   tag: string;
+  /** Shown as a "Live" badge when the project is deployed. */
+  live?: boolean;
+  /** Fake terminal path shown in the detail panel's title bar. */
+  path: string;
+  summary: string;
+  stats?: { value: string; label: string }[];
+  points: { lead: string; text: string }[];
+  stack: string[];
+  /** When set, the project title in the detail panel links here. */
+  url?: string;
   links?: { label: string; href: string }[];
 };
 
 export const projects: Project[] = [
   {
     title: "FlowDesc.app",
-    blurb:
-      "Project-management SaaS (issues, board, sprints, analytics), live on Render and Neon with a Cloudflare domain, email routing and a scheduled Worker that keeps the server warm. Typed monorepo with Zod contracts shared by the Express API and the React app, tenant scoping on every query, real-time updates (Socket.IO), optimistic updates and version-checked edits that never overwrite silently. Cut sprint-velocity analytics from 3.9s to 19 ms and project deletion from 9s to 0.6s at 20,000 issues. Secure auth with JWT and rotating refresh tokens, Argon2id, Google/GitHub sign-in, rate limiting and strict CSP. Published an MCP server to npm with provenance via GitHub Actions, so AI apps like Claude can read and update issues. 700+ unit/API tests and a 280+ test Playwright suite running in CI, split into 4 parallel shards.",
-    stack: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Drizzle", "Socket.IO", "GitHub Actions"],
     tag: "Full-Stack",
+    live: true,
+    path: "~/projects/flowdesc",
+    url: "https://www.flowdesc.app/",
+    summary:
+      "Project-management SaaS (issues, board, sprints, analytics), live on Render and Neon with a Cloudflare domain, email routing and a scheduled Worker that keeps the server warm.",
+    stats: [
+      { value: "3.9s → 19ms", label: "sprint analytics at 20k issues" },
+      { value: "9s → 0.6s", label: "project deletion at 20k issues" },
+      { value: "700+", label: "unit/API tests" },
+      { value: "280+", label: "Playwright tests, 4 parallel shards" },
+    ],
+    points: [
+      {
+        lead: "Typed monorepo",
+        text: "with Zod contracts shared by the Express API and the React app",
+      },
+      { lead: "Tenant scoping", text: "on every query" },
+      {
+        lead: "Real-time",
+        text: "updates (Socket.IO), optimistic updates and version-checked edits that never overwrite silently",
+      },
+      {
+        lead: "Secure auth",
+        text: "with JWT and rotating refresh tokens, Argon2id, Google/GitHub sign-in, rate limiting and strict CSP",
+      },
+      {
+        lead: "MCP server",
+        text: "published to npm with provenance via GitHub Actions, so AI apps like Claude can read and update issues",
+      },
+    ],
+    stack: [
+      "React 19",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Drizzle",
+      "Socket.IO",
+      "GitHub Actions",
+    ],
   },
   {
     title: "eCommerce Web Application",
-    blurb:
-      "Full-stack platform with product catalog, shopping cart, and secure checkout functionality. Implemented JWT authentication, PayPal payment integration, and a comprehensive RESTful API with 20+ endpoints, backed by a responsive React frontend with real-time cart updates and optimized database queries.",
-    stack: ["C#", "ASP.NET Core Web API", "React", "PostgreSQL", "JWT", "PayPal API", "Postman"],
     tag: "Full-Stack",
+    path: "~/projects/ecommerce",
+    summary:
+      "Full-stack platform with product catalog, shopping cart, and secure checkout functionality.",
+    points: [
+      {
+        lead: "JWT authentication",
+        text: "and PayPal payment integration",
+      },
+      { lead: "RESTful API", text: "with 20+ endpoints" },
+      {
+        lead: "Responsive React frontend",
+        text: "with real-time cart updates and optimized database queries",
+      },
+    ],
+    stack: ["C#", "ASP.NET Core Web API", "React", "PostgreSQL", "JWT", "PayPal API", "Postman"],
   },
   {
     title: "Grinders FX",
-    blurb:
-      "Crypto-focused landing page and dashboard featuring live market stats, price charts, a TradingView-embedded chart widget, and portfolio/testimonial/pricing sections. Implemented dark/light theme switching and a reusable shadcn/ui + Radix UI component system.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Recharts", "GitHub Actions"],
     tag: "Freelance",
+    path: "~/projects/grinders-fx",
+    summary:
+      "Crypto-focused landing page and dashboard featuring live market stats, price charts, a TradingView-embedded chart widget, and portfolio/testimonial/pricing sections.",
+    points: [
+      { lead: "Dark/light", text: "theme switching" },
+      {
+        lead: "Reusable component system",
+        text: "built on shadcn/ui and Radix UI",
+      },
+    ],
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Recharts", "GitHub Actions"],
   },
 ];
 
