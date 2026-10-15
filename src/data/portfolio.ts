@@ -16,7 +16,6 @@ export const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}CV.pdf`,
   available: true,
   socials: {
-    // TODO: confirm the GitHub URL — currently a best guess.
     github: "https://github.com/sabbapxakadze",
     linkedin: "https://www.linkedin.com/in/saba-pkhakadze/",
     leetcode: "https://leetcode.com/u/snowka49/",
@@ -57,7 +56,7 @@ export const experience: Experience[] = [
       "Storybook",
     ],
     highlights: [
-      "Develop and maintain features across the company's HR / employee-management dashboard (React, MUI, Redux Toolkit) and its backend API (Node.js, Express, TypeScript, MongoDB), resolving bugs across both the frontend and the data layer.",
+      "Developed and maintained features across the company's HR / employee-management dashboard (React, MUI, Redux Toolkit) and its backend API (Node.js, Express, TypeScript, MongoDB), resolving bugs across both the frontend and the data layer.",
       "Built and published an internal shared TypeScript models package consumed by both the frontend dashboard and backend API, keeping data types consistent across the fullstack codebase and reducing duplication.",
       "Designed and developed reusable components for the company's Storybook-based UI component library, translating Figma designs into production-ready, cross-platform components.",
       "Integrated real-time features using an Elixir/Phoenix-based chat service for live messaging/notifications.",
@@ -91,17 +90,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "FlowDesc.app",
+    blurb:
+      "Project-management SaaS (issues, board, sprints, analytics), live on Render and Neon with a Cloudflare domain, email routing and a scheduled Worker that keeps the server warm. Typed monorepo with Zod contracts shared by the Express API and the React app, tenant scoping on every query, real-time updates (Socket.IO), optimistic updates and version-checked edits that never overwrite silently. Cut sprint-velocity analytics from 3.9s to 19 ms and project deletion from 9s to 0.6s at 20,000 issues. Secure auth with JWT and rotating refresh tokens, Argon2id, Google/GitHub sign-in, rate limiting and strict CSP. Published an MCP server to npm with provenance via GitHub Actions, so AI apps like Claude can read and update issues. 700+ unit/API tests and a 280+ test Playwright suite running in CI, split into 4 parallel shards.",
+    stack: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Drizzle", "Socket.IO", "GitHub Actions"],
+    tag: "Full-Stack",
+  },
+  {
     title: "eCommerce Web Application",
     blurb:
       "Full-stack platform with product catalog, shopping cart, and secure checkout functionality. Implemented JWT authentication, PayPal payment integration, and a comprehensive RESTful API with 20+ endpoints, backed by a responsive React frontend with real-time cart updates and optimized database queries.",
     stack: ["C#", "ASP.NET Core Web API", "React", "PostgreSQL", "JWT", "PayPal API", "Postman"],
-    tag: "Full-Stack",
-  },
-  {
-    title: "Video-Platform",
-    blurb:
-      "Video-sharing platform with upload, streaming, and user engagement features (comments, likes). Scalable backend API handling video metadata and user interactions with optimized PostgreSQL queries.",
-    stack: ["C#", "ASP.NET Core Web API", "PostgreSQL", "React", "Postman"],
     tag: "Full-Stack",
   },
   {
