@@ -20,15 +20,18 @@ export function About() {
           </p>
 
           <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
-            {skills[0].items.slice(0, 8).map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 py-1 font-mono text-sm text-muted-foreground"
-              >
-                <span className="text-primary">▹</span>
-                {item}
-              </div>
-            ))}
+            {skills
+              .find((g) => g.group === "Web Development")
+              ?.items.slice(0, 8)
+              .map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-2 py-1 font-mono text-sm text-muted-foreground"
+                >
+                  <span className="text-primary">▹</span>
+                  {item}
+                </div>
+              ))}
           </div>
         </Reveal>
 
