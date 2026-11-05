@@ -129,6 +129,10 @@ export const projects: Project[] = [
         lead: "MCP server",
         text: "published to npm with provenance via GitHub Actions, so AI apps like Claude can read and update issues",
       },
+      {
+        lead: "In-app RAG assistant",
+        text: "with Postgres full-text retrieval, Llama on Cloudflare Workers AI, cited answers and prompt-injection defenses",
+      },
     ],
     stack: [
       "React 19",
@@ -243,6 +247,7 @@ export const skills: { group: string; items: string[] }[] = [
       "Docker Compose",
       "GitHub Actions",
       "CI/CD",
+      "Postgres full-text search",
     ],
   },
   {
@@ -261,7 +266,13 @@ export const skills: { group: string; items: string[] }[] = [
   },
   {
     group: "AI & Integrations",
-    items: ["MCP server development", "Claude Code", "OpenAI Codex"],
+    items: [
+      "Claude Code",
+      "OpenAI Codex",
+      "MCP server development",
+      "RAG",
+      "LLM integration (Cloudflare Workers, Llama)",
+    ],
   },
 ];
 
