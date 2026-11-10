@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -10,8 +10,17 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const progressRef = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${ratio})`;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,12 +39,9 @@ export function Navbar() {
         <a
           href="#top"
           aria-label="Home"
-          className="group inline-flex items-center gap-2.5"
+          className="group inline-flex items-center"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md border border-primary/40 font-mono text-sm font-bold text-primary transition-colors group-hover:bg-primary/10">
-            SP
-          </span>
-          <span className="hidden font-semibold tracking-tight sm:inline">
+          <span className="caret text-lg font-bold tracking-tight transition-colors group-hover:text-primary">
             Saba Pkhakadze
           </span>
         </a>
@@ -82,6 +88,13 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+
+      {/* Scroll progress */}
+      <span
+        ref={progressRef}
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-primary/40 to-primary"
+      />
 
       {/* Mobile menu */}
       {open && (

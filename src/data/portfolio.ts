@@ -26,7 +26,7 @@ export const about = {
   // A few short paragraphs. Keep it human.
   paragraphs: [
     "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack – designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
-    "At BeneNAV I ship features across an employee-management platform and its backend API, build shared TypeScript packages and Storybook components, and integrate real-time services. At DevsData LLC I work across the frontend and backend of production applications, building internal tools and automations and tracing issues across the full stack.",
+    "At DevsData LLC I work across the frontend and backend of production applications, building internal tools and automations and tracing issues across the full stack. Alongside it, until August 2026, I worked at BeneNAV, where I shipped features across an employee-management platform and its backend API, built shared TypeScript packages and Storybook components, and integrated real-time services.",
   ],
 };
 
@@ -43,8 +43,7 @@ export const experience: Experience[] = [
   {
     company: "BeneNAV",
     role: "Full-Stack Engineer",
-    period: "Nov 2024 – Present",
-    current: true,
+    period: "Nov 2024 – Aug 2026",
     stack: [
       "React",
       "MUI",
