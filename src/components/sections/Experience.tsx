@@ -4,6 +4,7 @@ import { experience, type Experience as Job } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { Chip } from "@/components/Chip";
 import { cn } from "@/lib/utils";
 
 /** Bullets shown before "Show more". */
@@ -73,12 +74,7 @@ function JobTile({ job, index }: { job: Job; index: number }) {
 
       <ul className="mt-8 flex flex-wrap gap-2">
         {job.stack.map((t) => (
-          <li
-            key={t}
-            className="rounded-full bg-background px-3.5 py-1.5 text-sm font-medium"
-          >
-            {t}
-          </li>
+          <Chip key={t} className="bg-background">{t}</Chip>
         ))}
       </ul>
     </Reveal>

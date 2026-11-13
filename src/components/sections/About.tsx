@@ -4,14 +4,35 @@ import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
+import { chipBase } from "@/components/Chip";
 import { cn } from "@/lib/utils";
 
 export function About() {
-  // Index of the "How I build" tile that is hovered, focused or tapped.
+  // "How I build" card that is hovered / focused (hovered) or tapped (pinned).
   const [hovered, setHovered] = useState<number | null>(null);
   const [pinned, setPinned] = useState<number | null>(null);
-  const focused = hovered ?? pinned;
-  const lit = new Set(focused === null ? [] : proof[focused].uses);
+  // Tool in "Everything I use" that is hovered / focused or tapped.
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [pinnedSkill, setPinnedSkill] = useState<string | null>(null);
+
+  // A tool takes priority over a card. Either way the other side lights up
+  // (nothing else fades or dims).
+  const activeSkill = hoveredSkill ?? pinnedSkill;
+  const activeCard = activeSkill === null ? (hovered ?? pinned) : null;
+
+  const litCards =
+    activeSkill !== null
+      ? proof.flatMap((p, i) => (p.uses.includes(activeSkill) ? [i] : []))
+      : activeCard !== null
+        ? [activeCard]
+        : [];
+  const litSkills = new Set(
+    activeSkill !== null
+      ? [activeSkill]
+      : activeCard !== null
+        ? proof[activeCard].uses
+        : []
+  );
 
   return (
     <Section id="about" tone="soft">
@@ -52,7 +73,7 @@ export function About() {
           How I build.
         </h3>
         <p className="mb-6 mt-2 text-muted-foreground">
-          Hover or tap a card to see which tools it uses.
+          Hover or tap a card or a tool to see how they connect.
         </p>
 
         <ul
@@ -64,13 +85,23 @@ export function About() {
               <button
                 type="button"
                 aria-pressed={pinned === i}
-                onMouseEnter={() => setHovered(i)}
-                onFocus={() => setHovered(i)}
+                onMouseEnter={() => {
+                  setHovered(i);
+                  setPinnedSkill(null);
+                }}
+                onFocus={() => {
+                  setHovered(i);
+                  setPinnedSkill(null);
+                }}
                 onBlur={() => setHovered(null)}
-                onClick={() => setPinned((p) => (p === i ? null : i))}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => {
+                  setPinned((p) => (p === i ? null : i));
+                  setPinnedSkill(null);
+                }}
                 className={cn(
-                  "flex w-full flex-col rounded-tile bg-card p-7 text-left transition-all duration-300 hover:-translate-y-1",
-                  focused === i && "ring-2 ring-primary"
+                  "flex w-full flex-col rounded-tile bg-card p-7 text-left transition-all duration-150 hover:-translate-y-1",
+                  litCards.includes(i) && "ring-2 ring-primary"
                 )}
               >
                 <span className="text-lg font-semibold text-muted-foreground">
@@ -101,7 +132,10 @@ export function About() {
           Everything I use.
         </h3>
 
-        <dl className="divide-y divide-border rounded-tile bg-card px-6 py-2 sm:px-8">
+        <dl
+          className="divide-y divide-border rounded-tile bg-card px-6 py-2 sm:px-8"
+          onMouseLeave={() => setHoveredSkill(null)}
+        >
           {skills.map((g) => (
             <div
               key={g.group}
@@ -113,19 +147,31 @@ export function About() {
               <dd>
                 <ul className="flex flex-wrap gap-2">
                   {g.items.map((item) => {
-                    const on = lit.has(item);
+                    const on = litSkills.has(item);
                     return (
-                      <li
-                        key={item}
-                        className={cn(
-                          "rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-300",
-                          on
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-secondary",
-                          focused !== null && !on && "opacity-30"
-                        )}
-                      >
-                        {item}
+                      <li key={item}>
+                        {/* tabIndex -1 keeps the Tab order short: keyboard users
+                            use the cards above, mouse and touch use the tools. */}
+                        <button
+                          type="button"
+                          tabIndex={-1}
+                          aria-pressed={pinnedSkill === item}
+                          onMouseEnter={() => setHoveredSkill(item)}
+                          onMouseLeave={() => setHoveredSkill(null)}
+                          onClick={() => {
+                            setPinnedSkill((s) => (s === item ? null : item));
+                            setPinned(null);
+                          }}
+                          className={cn(
+                            chipBase,
+                            "active:scale-95",
+                            on
+                              ? "scale-105 bg-primary text-primary-foreground"
+                              : "bg-secondary hover:bg-foreground/10"
+                          )}
+                        >
+                          {item}
+                        </button>
                       </li>
                     );
                   })}

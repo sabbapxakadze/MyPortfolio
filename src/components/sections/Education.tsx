@@ -2,6 +2,7 @@ import { education } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { Chip } from "@/components/Chip";
 
 export function Education() {
   return (
@@ -30,12 +31,7 @@ export function Education() {
 
             <ul className="mt-7 flex flex-wrap gap-2">
               {item.highlights.map((h) => (
-                <li
-                  key={h}
-                  className="rounded-full bg-background px-3.5 py-1.5 text-sm font-medium"
-                >
-                  {h}
-                </li>
+                <Chip key={h} className="bg-background">{h}</Chip>
               ))}
             </ul>
           </Reveal>

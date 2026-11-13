@@ -4,6 +4,7 @@ import { projects } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { Chip } from "@/components/Chip";
 import { useTabKeys } from "@/hooks/useTabKeys";
 import { cn } from "@/lib/utils";
 
@@ -132,12 +133,7 @@ export function Projects() {
 
           <ul className="mt-9 flex flex-wrap gap-2">
             {project.stack.map((t) => (
-              <li
-                key={t}
-                className="rounded-full bg-secondary px-3.5 py-1.5 text-sm font-medium"
-              >
-                {t}
-              </li>
+              <Chip key={t} className="bg-secondary">{t}</Chip>
             ))}
           </ul>
         </article>

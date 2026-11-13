@@ -73,7 +73,7 @@ export const proof: Proof[] = [
     text: "Argon2id",
     description:
       "JWT with rotating refresh tokens, Google and GitHub sign-in, rate limiting and a strict CSP.",
-    uses: ["Node.js", "Express.js"],
+    uses: ["JWT", "Argon2id", "Google/GitHub sign-in", "Rate limiting", "CSP"],
   },
   {
     title: "AI-ready.",
@@ -362,6 +362,11 @@ export const skills: { group: string; items: string[] }[] = [
       "CI/CD",
       "Postgres full-text search",
     ],
+  },
+  {
+    // From the FlowDesc bullets on the CV (not in the CV skills line).
+    group: "Security",
+    items: ["JWT", "Argon2id", "Google/GitHub sign-in", "Rate limiting", "CSP"],
   },
   {
     group: "Development Tools",
