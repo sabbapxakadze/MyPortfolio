@@ -19,7 +19,7 @@ export function Education() {
           >
             <div className="mb-4 flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-secondary text-foreground">
                   <GraduationCap className="h-5 w-5" />
                 </span>
                 <div>
@@ -34,7 +34,7 @@ export function Education() {
               </span>
             </div>
 
-            <p className="font-medium text-primary">{item.program}</p>
+            <p className="font-medium">{item.program}</p>
 
             <ul className="mt-4 space-y-2">
               {item.highlights.map((h) => (
@@ -42,7 +42,7 @@ export function Education() {
                   key={h}
                   className="flex gap-2.5 text-sm text-muted-foreground"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/70" />
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground/30" />
                   {h}
                 </li>
               ))}

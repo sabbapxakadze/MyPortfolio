@@ -11,7 +11,7 @@ export function Hero() {
     >
       <div className="container">
         <p
-          className="animate-in-up text-xl font-semibold tracking-tight text-primary sm:text-2xl"
+          className="animate-in-up text-xl font-semibold tracking-tight text-muted-foreground sm:text-2xl"
           style={delay(0)}
         >
           Hello, I&apos;m {profile.name.split(" ")[0]}.

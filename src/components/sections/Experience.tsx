@@ -48,7 +48,7 @@ function JobTile({ job, index }: { job: Job; index: number }) {
               i >= VISIBLE && "animate-in-up"
             )}
           >
-            <span className="mt-[0.7em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+            <span className="mt-[0.7em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground/30" />
             <span>{h}</span>
           </li>
         ))}
