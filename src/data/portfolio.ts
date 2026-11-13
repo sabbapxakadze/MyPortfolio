@@ -40,6 +40,48 @@ export const about = {
   ],
 };
 
+export type Proof = {
+  title: string;
+  /** A big number that counts from `from` to `to` when scrolled into view. */
+  count?: { from: number; to: number; suffix: string };
+  /** A big word shown instead of a number. */
+  text?: string;
+  description: string;
+  tags: string[];
+};
+
+// Facts only from the CV (FlowDesc.app). Keep in sync with the CV.
+export const proof: Proof[] = [
+  {
+    title: "Fast.",
+    count: { from: 3900, to: 19, suffix: " ms" },
+    description:
+      "Sprint analytics cut from 3.9 s to 19 ms at 20,000 issues. Project deletion went from 9 s to 0.6 s.",
+    tags: ["PostgreSQL", "Drizzle"],
+  },
+  {
+    title: "Tested.",
+    count: { from: 0, to: 700, suffix: "+" },
+    description:
+      "Unit and API tests, plus a 280+ test Playwright suite running in CI across 4 parallel shards.",
+    tags: ["Playwright", "Jest", "GitHub Actions"],
+  },
+  {
+    title: "Secure.",
+    text: "Argon2id",
+    description:
+      "JWT with rotating refresh tokens, Google and GitHub sign-in, rate limiting and a strict CSP.",
+    tags: ["JWT", "CSP", "Rate limiting"],
+  },
+  {
+    title: "AI-ready.",
+    text: "MCP",
+    description:
+      "A published MCP server on npm with provenance, and an in-app RAG assistant with cited answers and prompt-injection defenses.",
+    tags: ["MCP", "RAG", "Claude Code"],
+  },
+];
+
 export type Experience = {
   company: string;
   role: string;
