@@ -1,72 +1,126 @@
-import { about, skills } from "@/data/portfolio";
+import { useState } from "react";
+import { about, proof, skills } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { CountUp } from "@/components/CountUp";
+import { cn } from "@/lib/utils";
 
 export function About() {
+  // Index of the "How I build" tile that is hovered, focused or tapped.
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [pinned, setPinned] = useState<number | null>(null);
+  const focused = hovered ?? pinned;
+  const lit = new Set(focused === null ? [] : proof[focused].uses);
+
   return (
-    <section id="about" className="container scroll-mt-20 py-24">
-      <SectionHeading index="01" title="About me" />
+    <Section id="about" tone="soft">
+      <SectionHeading title="About." />
 
-      <div className="grid gap-12 lg:grid-cols-5">
-        <Reveal className="space-y-4 lg:col-span-3">
-          {about.paragraphs.map((p, i) => (
-            <p key={i} className="text-lg leading-relaxed text-muted-foreground">
-              {p}
-            </p>
-          ))}
-
-          <p className="pt-2 text-lg leading-relaxed text-muted-foreground">
-            A few technologies I work with:
+      <Reveal className="max-w-3xl space-y-5">
+        {about.paragraphs.map((p, i) => (
+          <p
+            key={i}
+            className={cn(
+              "leading-relaxed tracking-tight",
+              i === 0
+                ? "text-2xl font-medium text-foreground sm:text-[1.7rem] sm:leading-snug"
+                : "text-lg text-muted-foreground sm:text-xl"
+            )}
+          >
+            {p}
           </p>
+        ))}
+      </Reveal>
 
-          <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
-            {skills
-              .find((g) => g.group === "Web Development")
-              ?.items.slice(0, 8)
-              .map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 py-1 font-mono text-sm text-muted-foreground"
-                >
-                  <span className="text-primary">▹</span>
-                  {item}
-                </div>
-              ))}
-          </div>
-        </Reveal>
+      <Reveal delay={100} className="mt-16">
+        <h3 className="text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+          How I build.
+        </h3>
+        <p className="mb-6 mt-2 text-muted-foreground">
+          Hover or tap a card to see which tools it uses.
+        </p>
 
-        {/* Terminal card */}
-        <Reveal delay={120} className="lg:col-span-2">
-          <div className="surface overflow-hidden shadow-lg">
-            <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
-              <span className="h-3 w-3 rounded-full bg-destructive/70" />
-              <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
-              <span className="h-3 w-3 rounded-full bg-primary/70" />
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
-                saba@dev: ~/skills
-              </span>
+        <ul
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          onMouseLeave={() => setHovered(null)}
+        >
+          {proof.map((item, i) => (
+            <li key={item.title} className="flex">
+              <button
+                type="button"
+                aria-pressed={pinned === i}
+                onMouseEnter={() => setHovered(i)}
+                onFocus={() => setHovered(i)}
+                onBlur={() => setHovered(null)}
+                onClick={() => setPinned((p) => (p === i ? null : i))}
+                className={cn(
+                  "flex w-full flex-col rounded-tile bg-card p-7 text-left transition-all duration-300 hover:-translate-y-1",
+                  focused === i && "ring-2 ring-primary"
+                )}
+              >
+                <span className="text-lg font-semibold text-muted-foreground">
+                  {item.title}
+                </span>
+                <span className="mt-3 block whitespace-nowrap text-5xl font-bold tracking-[-0.045em] sm:text-[3.2rem]">
+                  {item.count ? (
+                    <CountUp
+                      from={item.count.from}
+                      to={item.count.to}
+                      suffix={item.count.suffix}
+                    />
+                  ) : (
+                    item.text
+                  )}
+                </span>
+                <span className="mt-4 block text-[15px] leading-relaxed text-muted-foreground">
+                  {item.description}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      <Reveal delay={100} className="mt-14">
+        <h3 className="mb-6 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+          Everything I use.
+        </h3>
+
+        <dl className="divide-y divide-border rounded-tile bg-card px-6 py-2 sm:px-8">
+          {skills.map((g) => (
+            <div
+              key={g.group}
+              className="grid gap-3 py-5 sm:grid-cols-[11rem_1fr] sm:gap-8"
+            >
+              <dt className="text-sm font-semibold text-muted-foreground sm:pt-1.5">
+                {g.group}
+              </dt>
+              <dd>
+                <ul className="flex flex-wrap gap-2">
+                  {g.items.map((item) => {
+                    const on = lit.has(item);
+                    return (
+                      <li
+                        key={item}
+                        className={cn(
+                          "rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-300",
+                          on
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-secondary",
+                          focused !== null && !on && "opacity-30"
+                        )}
+                      >
+                        {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </dd>
             </div>
-            <div className="space-y-4 p-5 font-mono text-sm">
-              {skills.map((group) => (
-                <div key={group.group}>
-                  <p className="text-muted-foreground">
-                    <span className="text-primary">$</span> ls {""}
-                    {group.group.toLowerCase().replace(/[\s&/]+/g, "-")}
-                  </p>
-                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 pl-4 text-foreground/90">
-                    {group.items.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              <p className="text-muted-foreground">
-                <span className="text-primary">$</span> <span className="caret" />
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
+          ))}
+        </dl>
+      </Reveal>
+    </Section>
   );
 }

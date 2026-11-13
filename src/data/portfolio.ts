@@ -6,9 +6,18 @@
 export const profile = {
   name: "Saba Pkhakadze",
   role: "Full-Stack Engineer",
-  // Short line shown under the name in the hero.
+  // Hero headline.
+  headline: "Full-stack engineer.",
+  // Short line shown under the headline in the hero.
   tagline:
-    "I build full-stack web applications – from .NET & Node.js APIs to React frontends.",
+    "I build web products end to end, from the database to the interface. Currently at DevsData.",
+  // Numbers shown under the hero. Keep these in sync with the CV.
+  stats: [
+    { value: "19 ms", label: "sprint analytics, down from 3.9 s" },
+    { value: "700+", label: "unit and API tests" },
+    { value: "280+", label: "Playwright tests, 4 shards" },
+    { value: "2+ yrs", label: "professional experience" },
+  ],
   location: "Kutaisi, Georgia",
   email: "phkhakadze.saba49@gmail.com",
   phone: "+995 591 91 72 97",
@@ -29,6 +38,57 @@ export const about = {
     "At DevsData LLC I work across the frontend and backend of production applications, building and validating n8n and Make automations, integrating the HubSpot API and tracing issues across the full stack. Alongside it, until August 2026, I worked at BeneNAV, where I shipped features across an employee-management platform and its backend API, built shared TypeScript packages and Storybook components, and integrated real-time services.",
   ],
 };
+
+export type Proof = {
+  title: string;
+  /** A big number that counts from `from` to `to` when scrolled into view. */
+  count?: { from: number; to: number; suffix: string };
+  /** A big word shown instead of a number. */
+  text?: string;
+  description: string;
+  /** Skill names (exactly as in `skills`) this tile lights up in the table. */
+  uses: string[];
+};
+
+// Facts only from the CV (FlowDesc.app). Keep in sync with the CV.
+export const proof: Proof[] = [
+  {
+    title: "Fast.",
+    count: { from: 3900, to: 19, suffix: " ms" },
+    description:
+      "Sprint analytics cut from 3.9 s to 19 ms at 20,000 issues. Project deletion went from 9 s to 0.6 s.",
+    uses: ["PostgreSQL", "Drizzle ORM"],
+  },
+  {
+    title: "Tested.",
+    count: { from: 0, to: 700, suffix: "+" },
+    description:
+      "Unit and API tests, plus a 280+ test Playwright suite running in CI across 4 parallel shards.",
+    uses: ["GitHub Actions", "CI/CD"],
+  },
+  {
+    title: "Secure.",
+    text: "Argon2id",
+    description:
+      "JWT with rotating refresh tokens, Google and GitHub sign-in, rate limiting and a strict CSP.",
+    uses: ["Node.js", "Express.js"],
+  },
+  {
+    title: "AI-ready.",
+    text: "MCP",
+    description:
+      "A published MCP server on npm with provenance, and an in-app RAG assistant with cited answers and prompt-injection defenses.",
+    uses: [
+      "Claude Code",
+      "OpenAI Codex",
+      "Custom Claude Skills",
+      "MCP Server Development",
+      "RAG",
+      "LLM Integration (Llama, Cloudflare Workers AI)",
+      "Postgres full-text search",
+    ],
+  },
+];
 
 export type Experience = {
   company: string;
@@ -97,8 +157,6 @@ export type Project = {
   tag: string;
   /** Shown as a "Live" badge when the project is deployed. */
   live?: boolean;
-  /** Fake terminal path shown in the detail panel's title bar. */
-  path: string;
   summary: string;
   stats?: { value: string; label: string }[];
   points: { lead: string; text: string }[];
@@ -113,7 +171,6 @@ export const projects: Project[] = [
     title: "FlowDesc.app",
     tag: "Full-Stack",
     live: true,
-    path: "~/projects/flowdesc",
     url: "https://www.flowdesc.app/",
     summary:
       "Project-management SaaS (issues, board, sprints, analytics), live on Render and Neon with a Cloudflare domain, email routing and a scheduled Worker that keeps the server warm.",
@@ -160,7 +217,6 @@ export const projects: Project[] = [
   {
     title: "eCommerce Web Application",
     tag: "Full-Stack",
-    path: "~/projects/ecommerce",
     summary:
       "Full-stack platform with product catalog, shopping cart, and secure checkout functionality.",
     points: [
@@ -179,7 +235,6 @@ export const projects: Project[] = [
   {
     title: "Grinders FX",
     tag: "Freelance",
-    path: "~/projects/grinders-fx",
     summary:
       "Crypto-focused landing page and dashboard featuring live market stats, price charts, a TradingView-embedded chart widget, and portfolio/testimonial/pricing sections.",
     points: [
