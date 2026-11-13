@@ -10,7 +10,7 @@ export const profile = {
   headline: "Full-stack engineer.",
   // Short line shown under the headline in the hero.
   tagline:
-    "I build web products end to end, from the database to the interface. Currently at DevsData.",
+    "I build web products end to end, from the database to the interface.",
   // Numbers shown under the hero. Keep these in sync with the CV.
   stats: [
     { value: "19 ms", label: "sprint analytics, down from 3.9 s" },
