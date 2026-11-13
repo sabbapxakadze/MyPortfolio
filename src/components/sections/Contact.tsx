@@ -1,12 +1,12 @@
 import { Code2, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { profile } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 
 export function Contact() {
   return (
-    <section id="contact" className="container scroll-mt-20 py-24">
+    <Section id="contact" tone="soft">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="mono-label mb-4">05. What&apos;s next?</p>
-        <h2 className="text-3xl font-bold sm:text-4xl">Get in touch</h2>
+        <h2 className="text-4xl font-bold tracking-[-0.035em] sm:text-5xl">Get in touch.</h2>
         <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground">
           I&apos;m open to new opportunities and collaborations. Whether you have
           a question or just want to say hi, my inbox is always open – I&apos;ll
@@ -72,6 +72,6 @@ export function Contact() {
           </a>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

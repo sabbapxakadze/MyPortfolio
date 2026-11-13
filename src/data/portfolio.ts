@@ -6,9 +6,19 @@
 export const profile = {
   name: "Saba Pkhakadze",
   role: "Full-Stack Engineer",
-  // Short line shown under the name in the hero.
+  // Hero headline: the first part is bold, the second is muted.
+  headline: "Full-stack engineer",
+  headlineMuted: "who ships.",
+  // Short line shown under the headline in the hero.
   tagline:
-    "I build full-stack web applications – from .NET & Node.js APIs to React frontends.",
+    "I build web products end to end with React, Node.js and PostgreSQL. Currently at DevsData.",
+  // Numbers shown under the hero. Keep these in sync with the CV.
+  stats: [
+    { value: "19 ms", label: "sprint analytics, down from 3.9 s" },
+    { value: "700+", label: "unit and API tests" },
+    { value: "280+", label: "Playwright tests, 4 shards" },
+    { value: "2+ yrs", label: "professional experience" },
+  ],
   location: "Kutaisi, Georgia",
   email: "phkhakadze.saba49@gmail.com",
   phone: "+995 591 91 72 97",

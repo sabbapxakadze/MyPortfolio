@@ -1,11 +1,12 @@
 import { experience } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="container scroll-mt-20 py-24">
-      <SectionHeading index="02" title="Where I've worked" />
+    <Section id="experience">
+      <SectionHeading title="Where I've worked." />
 
       <div className="relative space-y-12">
         {/* vertical line */}
@@ -67,6 +68,6 @@ export function Experience() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

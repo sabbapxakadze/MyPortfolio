@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 import { projects } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
@@ -10,8 +11,8 @@ export function Projects() {
   const project = projects[active];
 
   return (
-    <section id="projects" className="container scroll-mt-20 py-24">
-      <SectionHeading index="03" title="Things I've built" />
+    <Section id="projects" tone="soft">
+      <SectionHeading title="Things I've built." />
 
       <Reveal className="grid gap-6 lg:grid-cols-[17rem_1fr] lg:gap-9">
         {/* Project list: vertical on desktop, scrollable row on small screens */}
@@ -165,6 +166,6 @@ export function Projects() {
           </div>
         </article>
       </Reveal>
-    </section>
+    </Section>
   );
 }

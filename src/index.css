@@ -3,74 +3,74 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------ */
-/*  Design tokens — terminal-refined, dark-first                       */
+/*  Design tokens - clean, Apple-inspired. Light first, dark supported  */
+/*  Sections alternate between --background and --secondary bands.      */
 /* ------------------------------------------------------------------ */
 
 @layer base {
   :root {
-    /* Light theme */
+    /* Light theme (default) */
     --background: 0 0% 100%;
-    --foreground: 240 10% 10%;
+    --foreground: 240 3% 12%; /* #1d1d1f */
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card: 0 0% 100%; /* white tiles on the grey bands */
+    --card-foreground: 240 3% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 240 3% 12%;
 
-    --primary: 152 60% 36%;
+    --primary: 210 100% 45%; /* #0071e3 */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 152 65% 45%;
+    --primary-glow: 210 100% 52%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 10% 10%;
+    --secondary: 240 11% 96%; /* #f5f5f7 */
+    --secondary-foreground: 240 3% 12%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 44%;
+    --muted: 240 11% 96%;
+    --muted-foreground: 240 2% 44%; /* #6e6e73 */
 
-    --accent: 152 60% 36%;
+    --accent: 210 100% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 152 60% 36%;
+    --border: 240 6% 83%; /* #d2d2d7 */
+    --input: 240 6% 83%;
+    --ring: 210 100% 45%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark theme (default) */
-    --background: 240 6% 7%;
-    --foreground: 0 0% 96%;
+    --background: 0 0% 0%;
+    --foreground: 240 11% 96%; /* #f5f5f7 */
 
-    --card: 240 5% 10%;
-    --card-foreground: 0 0% 96%;
+    --card: 240 3% 12%; /* #1d1d1f tiles on the darker bands */
+    --card-foreground: 240 11% 96%;
 
-    --popover: 240 5% 10%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 240 3% 12%;
+    --popover-foreground: 240 11% 96%;
 
-    --primary: 152 62% 50%;
-    --primary-foreground: 240 8% 6%;
-    --primary-glow: 152 70% 60%;
+    --primary: 209 100% 58%; /* #2997ff */
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 209 100% 66%;
 
-    --secondary: 240 5% 14%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 240 3% 7%;
+    --secondary-foreground: 240 11% 96%;
 
-    --muted: 240 5% 14%;
-    --muted-foreground: 240 5% 62%;
+    --muted: 240 3% 16%;
+    --muted-foreground: 240 2% 54%; /* #86868b */
 
-    --accent: 152 62% 50%;
-    --accent-foreground: 240 8% 6%;
+    --accent: 209 100% 58%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 63% 45%;
-    --destructive-foreground: 0 0% 96%;
+    --destructive-foreground: 240 11% 96%;
 
-    --border: 240 5% 17%;
-    --input: 240 5% 17%;
-    --ring: 152 62% 50%;
+    --border: 240 3% 18%;
+    --input: 240 3% 18%;
+    --ring: 209 100% 58%;
   }
 }
 
@@ -81,28 +81,13 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 3rem;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow-x: hidden;
-  }
-
-  /* Subtle dotted grid backdrop */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: radial-gradient(
-      hsl(var(--foreground) / 0.05) 1px,
-      transparent 1px
-    );
-    background-size: 28px 28px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-    pointer-events: none;
+    letter-spacing: -0.011em;
   }
 
   /* Custom scrollbar */

@@ -1,12 +1,13 @@
 import { GraduationCap } from "lucide-react";
 import { education } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export function Education() {
   return (
-    <section id="education" className="container scroll-mt-20 py-24">
-      <SectionHeading index="04" title="Education" />
+    <Section id="education">
+      <SectionHeading title="Education." />
 
       <div className="grid gap-6 md:grid-cols-2">
         {education.map((item, i) => (
@@ -49,6 +50,6 @@ export function Education() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

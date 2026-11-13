@@ -1,11 +1,12 @@
 import { about, skills } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export function About() {
   return (
-    <section id="about" className="container scroll-mt-20 py-24">
-      <SectionHeading index="01" title="About me" />
+    <Section id="about" tone="soft">
+      <SectionHeading title="About." />
 
       <div className="grid gap-12 lg:grid-cols-5">
         <Reveal className="space-y-4 lg:col-span-3">
@@ -67,6 +68,6 @@ export function About() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }
