@@ -90,6 +90,49 @@ export const proof: Proof[] = [
   },
 ];
 
+export type Shot = {
+  id: string;
+  label: string;
+  /** File under public/flowdesc, resolved against the Vite base path. */
+  file: string;
+  alt: string;
+  caption: string;
+};
+
+// Screenshots and wording come from flowdesc.app (the user's own product).
+export const showcase = {
+  title: "FlowDesc.",
+  eyebrow: "Featured project",
+  url: "https://www.flowdesc.app/",
+  summary:
+    "Boards, sprints, issues and analytics, updated live for everyone on your team.",
+  shots: [
+    {
+      id: "board",
+      label: "Board",
+      file: "board.jpg",
+      alt: "The FlowDesc board: issues in Todo, In progress and Done columns, with labels, priorities and assignees.",
+      caption:
+        "Issues in Todo, In progress and Done columns, with labels, priorities and assignees.",
+    },
+    {
+      id: "issues",
+      label: "Issues",
+      file: "issues.jpg",
+      alt: "The FlowDesc issue list, grouped by status: one line per issue with its priority, labels, due date and assignee.",
+      caption:
+        "The issue list, grouped by status: one line per issue with its priority, labels, due date and assignee.",
+    },
+    {
+      id: "analytics",
+      label: "Analytics",
+      file: "analytics.jpg",
+      alt: "The FlowDesc analytics page: weekly throughput, cycle time and sprint velocity charts.",
+      caption: "Weekly throughput, cycle time and sprint velocity charts.",
+    },
+  ] as Shot[],
+};
+
 export type Experience = {
   company: string;
   role: string;
