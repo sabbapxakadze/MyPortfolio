@@ -32,10 +32,12 @@ export const profile = {
 };
 
 export const about = {
-  // A few short paragraphs. Keep it human.
+  // Two short paragraphs, first person. Time-sensitive facts: update them
+  // each year ("fourth year" of the 2023-2027 degree, "more than two years"
+  // since Jan 2024 at DevsData).
   paragraphs: [
-    "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack – designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
-    "At DevsData LLC I work across the frontend and backend of production applications, building and validating n8n and Make automations, integrating the HubSpot API and tracing issues across the full stack. Alongside it, until August 2026, I worked at BeneNAV, where I shipped features across an employee-management platform and its backend API, built shared TypeScript packages and Storybook components, and integrated real-time services.",
+    "I'm a full-stack engineer, mostly working in TypeScript, with Node.js on the backend and React on the front. I've been doing this professionally for more than two years, and I'm in my fourth year of a Computer Science degree at Kutaisi International University.",
+    "Lately a lot of what I build involves AI. FlowDesc has an MCP server, so AI apps like Claude can read and update your issues, and a RAG assistant that looks things up and cites its sources.",
   ],
 };
 
