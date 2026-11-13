@@ -3,6 +3,7 @@ import { about, skills } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { useTabKeys } from "@/hooks/useTabKeys";
 import { cn } from "@/lib/utils";
 
 export function About() {
@@ -13,6 +14,7 @@ export function About() {
     )
   );
   const group = skills[active];
+  const onTabKeys = useTabKeys(skills.length, active, setActive);
 
   return (
     <Section id="about" tone="soft">
@@ -43,6 +45,7 @@ export function About() {
           <div
             role="tablist"
             aria-label="Skill groups"
+            onKeyDown={onTabKeys}
             className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:inline-flex sm:max-w-full sm:rounded-full sm:bg-secondary sm:p-1 sm:pb-1"
           >
             {skills.map((g, i) => (
@@ -52,6 +55,7 @@ export function About() {
                 role="tab"
                 id={`skills-tab-${i}`}
                 aria-selected={i === active}
+                tabIndex={i === active ? 0 : -1}
                 aria-controls="skills-panel"
                 onClick={() => setActive(i)}
                 className={cn(

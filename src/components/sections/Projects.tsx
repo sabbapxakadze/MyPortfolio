@@ -4,11 +4,13 @@ import { projects } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { useTabKeys } from "@/hooks/useTabKeys";
 import { cn } from "@/lib/utils";
 
 export function Projects() {
   const [active, setActive] = useState(0);
   const project = projects[active];
+  const onTabKeys = useTabKeys(projects.length, active, setActive);
 
   return (
     <Section id="projects" tone="soft">
@@ -18,6 +20,7 @@ export function Projects() {
         <div
           role="tablist"
           aria-label="Projects"
+          onKeyDown={onTabKeys}
           className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:inline-flex sm:max-w-full sm:rounded-full sm:bg-background sm:p-1"
         >
           {projects.map((p, i) => (
@@ -27,6 +30,7 @@ export function Projects() {
               role="tab"
               id={`project-tab-${i}`}
               aria-selected={i === active}
+              tabIndex={i === active ? 0 : -1}
               aria-controls="project-panel"
               onClick={() => setActive(i)}
               className={cn(
