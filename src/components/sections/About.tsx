@@ -17,21 +17,35 @@ export function About() {
     <Section id="about" tone="soft">
       <SectionHeading title="About." />
 
-      <Reveal className="max-w-3xl space-y-5">
-        {about.paragraphs.map((p, i) => (
-          <p
-            key={i}
-            className={cn(
-              "leading-relaxed tracking-tight",
-              i === 0
-                ? "text-2xl font-medium text-foreground sm:text-[1.7rem] sm:leading-snug"
-                : "text-lg text-muted-foreground sm:text-xl"
-            )}
-          >
-            {p}
-          </p>
-        ))}
-      </Reveal>
+      <div className="grid items-start gap-10 lg:grid-cols-[1fr_20rem] lg:gap-16">
+        <Reveal className="max-w-3xl space-y-5">
+          {about.paragraphs.map((p, i) => (
+            <p
+              key={i}
+              className={cn(
+                "leading-relaxed tracking-tight",
+                i === 0
+                  ? "text-2xl font-medium text-foreground sm:text-[1.7rem] sm:leading-snug"
+                  : "text-lg text-muted-foreground sm:text-xl"
+              )}
+            >
+              {p}
+            </p>
+          ))}
+        </Reveal>
+
+        <Reveal delay={100} className="mx-auto w-full max-w-xs lg:mx-0 lg:max-w-none">
+          <img
+            src={`${import.meta.env.BASE_URL}profile.jpg`}
+            alt="Saba on an evening at a snowy ice rink, leaning on a railing in front of a lit Christmas tree."
+            width={640}
+            height={640}
+            loading="lazy"
+            decoding="async"
+            className="aspect-[4/5] w-full rounded-tile object-cover object-[47%_50%] shadow-xl"
+          />
+        </Reveal>
+      </div>
 
       <Reveal delay={100} className="mt-16">
         <h3 className="text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
