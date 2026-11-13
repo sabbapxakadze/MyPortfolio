@@ -93,7 +93,7 @@ export const proof: Proof[] = [
 export type Shot = {
   id: string;
   label: string;
-  /** File under public/flowdesc, resolved against the Vite base path. */
+  /** Base name of the images under public/flowdesc: `<name>-light.jpg` and `<name>-dark.jpg`. */
   file: string;
   alt: string;
   caption: string;
@@ -110,7 +110,7 @@ export const showcase = {
     {
       id: "board",
       label: "Board",
-      file: "board.jpg",
+      file: "board",
       alt: "The FlowDesc board: issues in Todo, In progress and Done columns, with labels, priorities and assignees.",
       caption:
         "Issues in Todo, In progress and Done columns, with labels, priorities and assignees.",
@@ -118,7 +118,7 @@ export const showcase = {
     {
       id: "issues",
       label: "Issues",
-      file: "issues.jpg",
+      file: "issues",
       alt: "The FlowDesc issue list, grouped by status: one line per issue with its priority, labels, due date and assignee.",
       caption:
         "The issue list, grouped by status: one line per issue with its priority, labels, due date and assignee.",
@@ -126,7 +126,7 @@ export const showcase = {
     {
       id: "analytics",
       label: "Analytics",
-      file: "analytics.jpg",
+      file: "analytics",
       alt: "The FlowDesc analytics page: weekly throughput, cycle time and sprint velocity charts.",
       caption: "Weekly throughput, cycle time and sprint velocity charts.",
     },

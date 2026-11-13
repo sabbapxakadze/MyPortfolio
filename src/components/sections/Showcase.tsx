@@ -6,14 +6,14 @@ import { Reveal } from "@/components/Reveal";
 import { useTabKeys } from "@/hooks/useTabKeys";
 import { cn } from "@/lib/utils";
 
-/** Full-width dark band: FlowDesc's real screenshots behind pill tabs. */
+/** FlowDesc's real screenshots behind pill tabs; follows the light/dark theme. */
 export function Showcase() {
   const [active, setActive] = useState(0);
   const shot = showcase.shots[active];
   const onTabKeys = useTabKeys(showcase.shots.length, active, setActive);
 
   return (
-    <Section id="flowdesc" tone="dark">
+    <Section id="flowdesc">
       <Reveal>
         <p className="text-lg font-semibold text-muted-foreground">
           {showcase.eyebrow}
@@ -70,20 +70,26 @@ export function Showcase() {
           aria-labelledby={`shot-tab-${active}`}
           className="relative mt-6"
         >
-          {/* soft glow behind the screenshot */}
+          {/* soft glow behind the screenshot (dark mode only) */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -inset-x-10 -bottom-10 -top-6 -z-0 rounded-[3rem] bg-primary/10 blur-3xl"
+            className="pointer-events-none absolute -inset-x-10 -bottom-10 -top-6 -z-0 hidden rounded-[3rem] bg-primary/10 blur-3xl dark:block"
           />
-          <img
-            key={shot.id}
-            src={`${import.meta.env.BASE_URL}flowdesc/${shot.file}`}
-            alt={shot.alt}
-            width={1440}
-            height={900}
-            decoding="async"
-            className="animate-in-up relative z-10 w-full rounded-2xl border border-border shadow-2xl sm:rounded-3xl"
-          />
+          {(["light", "dark"] as const).map((theme) => (
+            <img
+              key={`${shot.id}-${theme}`}
+              src={`${import.meta.env.BASE_URL}flowdesc/${shot.file}-${theme}.jpg`}
+              alt={shot.alt}
+              width={1440}
+              height={900}
+              loading="lazy"
+              decoding="async"
+              className={cn(
+                "animate-in-up relative z-10 w-full rounded-2xl border border-border shadow-2xl sm:rounded-3xl",
+                theme === "light" ? "dark:hidden" : "hidden dark:block"
+              )}
+            />
+          ))}
         </div>
         <p className="mt-5 max-w-2xl text-[15px] text-muted-foreground">
           {shot.caption}

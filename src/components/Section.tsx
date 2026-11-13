@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   id: string;
-  /** "soft" is a grey band, "dark" always uses the dark palette (even in light mode). */
-  tone?: "base" | "soft" | "dark";
+  /** "soft" renders a full-width grey band; sections alternate for rhythm. */
+  tone?: "base" | "soft";
   children: ReactNode;
 };
 
@@ -14,8 +14,7 @@ export function Section({ id, tone = "base", children }: Props) {
       id={id}
       className={cn(
         "scroll-mt-12 py-20 sm:py-28",
-        tone === "soft" && "bg-secondary",
-        tone === "dark" && "dark bg-background text-foreground"
+        tone === "soft" && "bg-secondary"
       )}
     >
       <div className="container">{children}</div>
