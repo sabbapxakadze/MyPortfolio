@@ -1,73 +1,89 @@
+import { useState } from "react";
 import { about, skills } from "@/data/portfolio";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { cn } from "@/lib/utils";
 
 export function About() {
+  const [active, setActive] = useState(() =>
+    Math.max(
+      0,
+      skills.findIndex((g) => g.group === "Web Development")
+    )
+  );
+  const group = skills[active];
+
   return (
     <Section id="about" tone="soft">
       <SectionHeading title="About." />
 
-      <div className="grid gap-12 lg:grid-cols-5">
-        <Reveal className="space-y-4 lg:col-span-3">
-          {about.paragraphs.map((p, i) => (
-            <p key={i} className="text-lg leading-relaxed text-muted-foreground">
-              {p}
-            </p>
-          ))}
-
-          <p className="pt-2 text-lg leading-relaxed text-muted-foreground">
-            A few technologies I work with:
+      <Reveal className="max-w-3xl space-y-5">
+        {about.paragraphs.map((p, i) => (
+          <p
+            key={i}
+            className={cn(
+              "leading-relaxed tracking-tight",
+              i === 0
+                ? "text-2xl font-medium text-foreground sm:text-[1.7rem] sm:leading-snug"
+                : "text-lg text-muted-foreground sm:text-xl"
+            )}
+          >
+            {p}
           </p>
+        ))}
+      </Reveal>
 
-          <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
-            {skills
-              .find((g) => g.group === "Web Development")
-              ?.items.slice(0, 8)
-              .map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 py-1 font-mono text-sm text-muted-foreground"
-                >
-                  <span className="text-primary">▹</span>
-                  {item}
-                </div>
-              ))}
-          </div>
-        </Reveal>
+      <Reveal delay={100} className="mt-14">
+        <h3 className="mb-5 text-2xl font-semibold tracking-tight">
+          What I work with.
+        </h3>
 
-        {/* Terminal card */}
-        <Reveal delay={120} className="lg:col-span-2">
-          <div className="surface overflow-hidden shadow-lg">
-            <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-4 py-3">
-              <span className="h-3 w-3 rounded-full bg-destructive/70" />
-              <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
-              <span className="h-3 w-3 rounded-full bg-primary/70" />
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
-                saba@dev: ~/skills
-              </span>
-            </div>
-            <div className="space-y-4 p-5 font-mono text-sm">
-              {skills.map((group) => (
-                <div key={group.group}>
-                  <p className="text-muted-foreground">
-                    <span className="text-primary">$</span> ls {""}
-                    {group.group.toLowerCase().replace(/[\s&/]+/g, "-")}
-                  </p>
-                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 pl-4 text-foreground/90">
-                    {group.items.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              <p className="text-muted-foreground">
-                <span className="text-primary">$</span> <span className="caret" />
-              </p>
-            </div>
+        <div className="rounded-tile bg-card p-6 sm:p-8">
+          <div
+            role="tablist"
+            aria-label="Skill groups"
+            className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:inline-flex sm:max-w-full sm:rounded-full sm:bg-secondary sm:p-1 sm:pb-1"
+          >
+            {skills.map((g, i) => (
+              <button
+                key={g.group}
+                type="button"
+                role="tab"
+                id={`skills-tab-${i}`}
+                aria-selected={i === active}
+                aria-controls="skills-panel"
+                onClick={() => setActive(i)}
+                className={cn(
+                  "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  i === active
+                    ? "bg-foreground text-background"
+                    : "text-muted-foreground hover:text-foreground max-sm:bg-secondary"
+                )}
+              >
+                {g.group}
+              </button>
+            ))}
           </div>
-        </Reveal>
-      </div>
+
+          <ul
+            key={group.group}
+            role="tabpanel"
+            id="skills-panel"
+            aria-labelledby={`skills-tab-${active}`}
+            className="animate-in-up mt-7 flex flex-wrap gap-2.5"
+          >
+            {group.items.map((item) => (
+              <li
+                key={item}
+                className="rounded-full bg-secondary px-4 py-2 text-[15px] font-medium tracking-tight"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
     </Section>
   );
 }
