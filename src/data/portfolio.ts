@@ -11,13 +11,6 @@ export const profile = {
   // Short line shown under the headline in the hero.
   tagline:
     "I build web products end to end, from the database to the interface.",
-  // Numbers shown under the hero. Keep these in sync with the CV.
-  stats: [
-    { value: "19 ms", label: "sprint analytics, down from 3.9 s" },
-    { value: "700+", label: "unit and API tests" },
-    { value: "280+", label: "Playwright tests, 4 shards" },
-    { value: "2+ yrs", label: "professional experience" },
-  ],
   location: "Kutaisi, Georgia",
   email: "phkhakadze.saba49@gmail.com",
   phone: "+995 591 91 72 97",
@@ -95,7 +88,7 @@ export const proof: Proof[] = [
 export type Shot = {
   id: string;
   label: string;
-  /** Base name of the images under public/flowdesc: `<name>-light.jpg` and `<name>-dark.jpg`. */
+  /** Base name of the images under public/flowdesc: `<name>-light.webp` and `<name>-dark.webp`. */
   file: string;
   alt: string;
   caption: string;

@@ -78,10 +78,10 @@ export function Showcase() {
           {(["light", "dark"] as const).map((theme) => (
             <img
               key={`${shot.id}-${theme}`}
-              src={`${import.meta.env.BASE_URL}flowdesc/${shot.file}-${theme}.jpg`}
+              src={`${import.meta.env.BASE_URL}flowdesc/${shot.file}-${theme}.webp`}
               alt={shot.alt}
-              width={1440}
-              height={900}
+              width={2560}
+              height={1600}
               loading="lazy"
               decoding="async"
               className={cn(

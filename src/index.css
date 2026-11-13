@@ -140,6 +140,32 @@
     }
   }
 
+  /* Hero aurora: two slow, offset drifts (static with reduced motion) */
+  .animate-aurora-a {
+    animation: aurora-drift-a 18s ease-in-out infinite alternate;
+  }
+  .animate-aurora-b {
+    animation: aurora-drift-b 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-drift-a {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-6%, 8%, 0) scale(1.12);
+    }
+  }
+
+  @keyframes aurora-drift-b {
+    from {
+      transform: translate3d(0, 0, 0) scale(1.05);
+    }
+    to {
+      transform: translate3d(9%, -7%, 0) scale(0.92);
+    }
+  }
+
   /* Theme switch icon: spins and fades in */
   .animate-theme-icon {
     animation: theme-icon 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;

@@ -7,9 +7,37 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="flex min-h-[100svh] flex-col justify-center pb-12 pt-28"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-16 pt-28"
     >
-      <div className="container">
+      {/* Aurora: pink, violet and blue light drifting slowly behind and beside the text. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div
+          className="animate-aurora-a absolute -right-[6%] top-[6%] h-[clamp(380px,48vw,740px)] w-[clamp(380px,48vw,740px)] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(var(--primary) / 0.75) 0%, hsl(var(--primary) / 0.35) 38%, transparent 70%)",
+          }}
+        />
+        <div
+          className="animate-aurora-b absolute right-[14%] top-[40%] h-[clamp(340px,42vw,660px)] w-[clamp(340px,42vw,660px)] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(255 100% 66% / 0.65) 0%, hsl(255 100% 66% / 0.3) 40%, transparent 70%)",
+          }}
+        />
+        <div
+          className="animate-aurora-a absolute -right-[12%] top-[50%] h-[clamp(320px,38vw,600px)] w-[clamp(320px,38vw,600px)] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(209 100% 58% / 0.6) 0%, hsl(209 100% 58% / 0.28) 40%, transparent 70%)",
+          }}
+        />
+        {/* keeps the text readable and blends the bottom edge into the page */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      </div>
+
+      <div className="container relative z-10">
         <p
           className="animate-in-up text-xl font-semibold tracking-tight text-muted-foreground sm:text-2xl"
           style={delay(0)}
@@ -18,14 +46,14 @@ export function Hero() {
         </p>
 
         <h1
-          className="animate-in-up mt-4 max-w-5xl text-[2.9rem] font-bold leading-[1.03] tracking-[-0.045em] sm:text-7xl lg:text-[6.5rem]"
+          className="animate-in-up mt-4 text-[2.9rem] font-bold leading-[1.02] tracking-[-0.05em] sm:text-7xl lg:text-[6.75rem] xl:text-[8rem]"
           style={delay(80)}
         >
           {profile.headline}
         </h1>
 
         <p
-          className="animate-in-up mt-7 max-w-2xl text-xl leading-snug tracking-tight text-muted-foreground sm:text-2xl"
+          className="animate-in-up mt-8 max-w-2xl text-xl leading-snug tracking-tight text-muted-foreground sm:text-[1.65rem]"
           style={delay(160)}
         >
           {profile.tagline}
@@ -82,20 +110,6 @@ export function Hero() {
             Available for opportunities
           </p>
         )}
-
-        <dl
-          className="animate-in-up mt-16 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-border pt-8 sm:mt-24 sm:grid-cols-4"
-          style={delay(380)}
-        >
-          {profile.stats.map((s) => (
-            <div key={s.label}>
-              <dd className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
-                {s.value}
-              </dd>
-              <dt className="mt-1 text-sm text-muted-foreground">{s.label}</dt>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );
