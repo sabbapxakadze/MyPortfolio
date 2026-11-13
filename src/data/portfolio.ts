@@ -107,8 +107,6 @@ export type Project = {
   tag: string;
   /** Shown as a "Live" badge when the project is deployed. */
   live?: boolean;
-  /** Fake terminal path shown in the detail panel's title bar. */
-  path: string;
   summary: string;
   stats?: { value: string; label: string }[];
   points: { lead: string; text: string }[];
@@ -123,7 +121,6 @@ export const projects: Project[] = [
     title: "FlowDesc.app",
     tag: "Full-Stack",
     live: true,
-    path: "~/projects/flowdesc",
     url: "https://www.flowdesc.app/",
     summary:
       "Project-management SaaS (issues, board, sprints, analytics), live on Render and Neon with a Cloudflare domain, email routing and a scheduled Worker that keeps the server warm.",
@@ -170,7 +167,6 @@ export const projects: Project[] = [
   {
     title: "eCommerce Web Application",
     tag: "Full-Stack",
-    path: "~/projects/ecommerce",
     summary:
       "Full-stack platform with product catalog, shopping cart, and secure checkout functionality.",
     points: [
@@ -189,7 +185,6 @@ export const projects: Project[] = [
   {
     title: "Grinders FX",
     tag: "Freelance",
-    path: "~/projects/grinders-fx",
     summary:
       "Crypto-focused landing page and dashboard featuring live market stats, price charts, a TradingView-embedded chart widget, and portfolio/testimonial/pricing sections.",
     points: [
