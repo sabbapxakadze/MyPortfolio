@@ -14,7 +14,7 @@ export function Hero() {
           className="animate-in-up text-xl font-semibold tracking-tight text-primary sm:text-2xl"
           style={delay(0)}
         >
-          {profile.name}
+          Hello, I&apos;m {profile.name.split(" ")[0]}.
         </p>
 
         <h1
