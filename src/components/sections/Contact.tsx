@@ -1,77 +1,111 @@
-import { Code2, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { Section } from "@/components/Section";
+import { Reveal } from "@/components/Reveal";
+
+const socials = [
+  { label: "GitHub", href: profile.socials.github },
+  { label: "LinkedIn", href: profile.socials.linkedin },
+  { label: "LeetCode", href: profile.socials.leetcode },
+];
 
 export function Contact() {
+  const details = [
+    {
+      Icon: Mail,
+      label: "Email",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+    },
+    {
+      Icon: Phone,
+      label: "Phone",
+      value: profile.phone,
+      href: `tel:${profile.phone.replace(/\s/g, "")}`,
+    },
+    { Icon: MapPin, label: "Location", value: profile.location },
+  ];
+
   return (
     <Section id="contact" tone="soft">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-bold tracking-[-0.035em] sm:text-5xl">Get in touch.</h2>
-        <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground">
-          I&apos;m open to new opportunities and collaborations. Whether you have
-          a question or just want to say hi, my inbox is always open – I&apos;ll
-          get back to you.
-        </p>
+      <Reveal className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <h2 className="text-4xl font-bold tracking-[-0.035em] sm:text-5xl">
+            Get in touch.
+          </h2>
+          <p className="mt-5 max-w-md text-xl leading-snug text-muted-foreground">
+            I&apos;m open to new opportunities and collaborations. Whether you
+            have a question or just want to say hi, my inbox is always open.
+          </p>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-8 inline-flex items-center gap-2 rounded-md border border-primary/40 px-8 py-4 font-mono text-primary transition-colors hover:bg-primary/10"
-        >
-          <Mail className="h-4 w-4" />
-          Say hello
-        </a>
-
-        <div className="mt-12 flex flex-col items-center gap-4 font-mono text-sm text-muted-foreground sm:flex-row sm:justify-center sm:gap-8">
-          <a
-            href={`mailto:${profile.email}`}
-            className="flex items-center gap-2 transition-colors hover:text-primary"
-          >
-            <Mail className="h-4 w-4" />
-            {profile.email}
-          </a>
-          <a
-            href={`tel:${profile.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 transition-colors hover:text-primary"
-          >
-            <Phone className="h-4 w-4" />
-            {profile.phone}
-          </a>
-          <span className="flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            {profile.location}
-          </span>
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-[17px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Say hello
+            </a>
+            <a
+              href={profile.resumeUrl}
+              download
+              className="group inline-flex items-center text-[17px] font-medium text-primary hover:underline"
+            >
+              Download CV
+              <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <a
-            href={profile.socials.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
-          >
-            <Github className="h-5 w-5" />
-          </a>
-          <a
-            href={profile.socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
-          >
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a
-            href={profile.socials.leetcode}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LeetCode"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
-          >
-            <Code2 className="h-5 w-5" />
-          </a>
+        <div className="min-w-0 space-y-4">
+          <ul className="divide-y divide-border rounded-tile bg-card px-7 py-2 sm:px-9">
+            {details.map(({ Icon, label, value, href }) => {
+              const content = (
+                <>
+                  <Icon className="h-5 w-5 shrink-0 text-muted-foreground" />
+                  <span className="min-w-0">
+                    <span className="block text-sm text-muted-foreground">
+                      {label}
+                    </span>
+                    <span className="block text-base font-medium [overflow-wrap:anywhere] sm:text-lg">
+                      {value}
+                    </span>
+                  </span>
+                </>
+              );
+              return (
+                <li key={label}>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="flex items-center gap-4 py-5 transition-opacity hover:opacity-70"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-4 py-5">{content}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 px-2">
+            {socials.map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center text-[17px] font-medium text-primary hover:underline"
+                >
+                  {label}
+                  <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }
