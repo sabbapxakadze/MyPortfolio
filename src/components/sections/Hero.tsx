@@ -1,118 +1,102 @@
-import { ArrowDown, Code2, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ChevronRight, Code2, Github, Linkedin } from "lucide-react";
 import { profile } from "@/data/portfolio";
+
+const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[92vh] items-center overflow-hidden"
+      className="flex min-h-[100svh] flex-col justify-center pb-12 pt-28"
     >
-      {/* accent glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
-      />
-
       <div className="container">
-        <div className="max-w-3xl">
-          {profile.available && (
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-mono text-xs text-primary animate-in-up">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
-              Available for opportunities
-            </div>
-          )}
+        <p
+          className="animate-in-up text-xl font-semibold tracking-tight text-muted-foreground sm:text-2xl"
+          style={delay(0)}
+        >
+          Hello, I&apos;m {profile.name.split(" ")[0]}.
+        </p>
 
-          <p
-            className="mb-3 font-mono text-primary animate-in-up"
-            style={{ animationDelay: "60ms" }}
+        <h1
+          className="animate-in-up mt-4 max-w-5xl text-[2.9rem] font-bold leading-[1.03] tracking-[-0.045em] sm:text-7xl lg:text-[6.5rem]"
+          style={delay(80)}
+        >
+          {profile.headline}
+        </h1>
+
+        <p
+          className="animate-in-up mt-7 max-w-2xl text-xl leading-snug tracking-tight text-muted-foreground sm:text-2xl"
+          style={delay(160)}
+        >
+          {profile.tagline}
+        </p>
+
+        <div
+          className="animate-in-up mt-9 flex flex-wrap items-center gap-x-6 gap-y-4"
+          style={delay(240)}
+        >
+          <a
+            href="#contact"
+            className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-[17px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Hi, my name is
-          </p>
-
-          <h1
-            className="text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl animate-in-up"
-            style={{ animationDelay: "120ms" }}
+            Get in touch
+          </a>
+          <a
+            href={profile.resumeUrl}
+            download
+            className="group inline-flex items-center text-[17px] font-medium text-primary hover:underline"
           >
-            {profile.name}.
-          </h1>
+            Download CV
+            <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+          </a>
 
-          <h2
-            className="mt-3 text-3xl font-bold tracking-tight text-muted-foreground sm:text-5xl lg:text-6xl animate-in-up"
-            style={{ animationDelay: "180ms" }}
-          >
-            {profile.role}.
-          </h2>
-
-          <p
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground animate-in-up"
-            style={{ animationDelay: "240ms" }}
-          >
-            {profile.tagline}
-          </p>
-
-          <div
-            className="mt-10 flex flex-wrap items-center gap-4 animate-in-up"
-            style={{ animationDelay: "300ms" }}
-          >
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              <Mail className="h-4 w-4" />
-              Get in touch
-            </a>
-            <a
-              href={profile.resumeUrl}
-              download
-              className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 font-medium transition-colors hover:border-primary/50 hover:text-primary"
-            >
-              <Download className="h-4 w-4" />
-              Download CV
-            </a>
-
-            <div className="ml-1 flex items-center gap-1">
+          <div className="flex items-center gap-1">
+            {[
+              { href: profile.socials.github, label: "GitHub", Icon: Github },
+              { href: profile.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
+              { href: profile.socials.leetcode, label: "LeetCode", Icon: Code2 },
+            ].map(({ href, label, Icon }) => (
               <a
-                href={profile.socials.github}
+                key={label}
+                href={href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary"
+                aria-label={label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Github className="h-5 w-5" />
+                <Icon className="h-5 w-5" />
               </a>
-              <a
-                href={profile.socials.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href={profile.socials.leetcode}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LeetCode"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Code2 className="h-5 w-5" />
-              </a>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
 
-      <a
-        href="#about"
-        aria-label="Scroll to about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors hover:text-primary"
-      >
-        <ArrowDown className="h-5 w-5 animate-bounce" />
-      </a>
+        {profile.available && (
+          <p
+            className="animate-in-up mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground"
+            style={delay(300)}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            Available for opportunities
+          </p>
+        )}
+
+        <dl
+          className="animate-in-up mt-16 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-border pt-8 sm:mt-24 sm:grid-cols-4"
+          style={delay(380)}
+        >
+          {profile.stats.map((s) => (
+            <div key={s.label}>
+              <dd className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
+                {s.value}
+              </dd>
+              <dt className="mt-1 text-sm text-muted-foreground">{s.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }

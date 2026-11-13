@@ -8,13 +8,11 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { CursorGlow } from "@/components/CursorGlow";
 
 export default function Portfolio() {
   return (
     <div className="min-h-screen">
       <SmoothScroll />
-      <CursorGlow />
       <Navbar />
       <main>
         <Hero />

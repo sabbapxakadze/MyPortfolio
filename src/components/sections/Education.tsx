@@ -1,12 +1,12 @@
-import { GraduationCap } from "lucide-react";
 import { education } from "@/data/portfolio";
+import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export function Education() {
   return (
-    <section id="education" className="container scroll-mt-20 py-24">
-      <SectionHeading index="04" title="Education" />
+    <Section id="education">
+      <SectionHeading title="Education." />
 
       <div className="grid gap-6 md:grid-cols-2">
         {education.map((item, i) => (
@@ -14,34 +14,26 @@ export function Education() {
             as="article"
             key={item.institution}
             delay={i * 100}
-            className="rounded-xl border border-border bg-card p-6"
+            className="flex flex-col rounded-tile bg-secondary p-7 sm:p-9"
           >
-            <div className="mb-4 flex items-start justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <GraduationCap className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="font-semibold leading-tight">
-                    {item.institution}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{item.detail}</p>
-                </div>
-              </div>
-              <span className="whitespace-nowrap font-mono text-sm text-muted-foreground">
-                {item.period}
-              </span>
-            </div>
+            <span className="self-start rounded-full bg-background px-3 py-1 text-sm text-muted-foreground">
+              {item.period}
+            </span>
 
-            <p className="font-medium text-primary">{item.program}</p>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">
+              {item.institution}
+            </h3>
+            <p className="mt-1.5 text-lg text-muted-foreground">
+              {item.program}
+              <span className="text-muted-foreground/70"> · {item.detail}</span>
+            </p>
 
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-7 flex flex-wrap gap-2">
               {item.highlights.map((h) => (
                 <li
                   key={h}
-                  className="flex gap-2.5 text-sm text-muted-foreground"
+                  className="rounded-full bg-background px-3.5 py-1.5 text-sm font-medium"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/70" />
                   {h}
                 </li>
               ))}
@@ -49,6 +41,6 @@ export function Education() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

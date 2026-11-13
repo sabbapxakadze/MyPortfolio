@@ -14,17 +14,18 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="text-center">
-        <p className="font-mono text-primary">404</p>
-        <h1 className="mt-2 text-4xl font-bold sm:text-5xl">Page not found</h1>
-        <p className="mt-4 font-mono text-muted-foreground">
-          <span className="text-primary">$</span> cd {location.pathname}{" "}
-          <span className="text-destructive">– no such file or directory</span>
+        <p className="text-xl font-semibold text-muted-foreground">404</p>
+        <h1 className="mt-2 text-5xl font-bold tracking-[-0.04em] sm:text-7xl">
+          Page not found.
+        </h1>
+        <p className="mt-5 text-xl text-muted-foreground">
+          The page you&apos;re looking for doesn&apos;t exist.
         </p>
         <a
-          href="/"
-          className="mt-8 inline-flex items-center gap-2 rounded-md border border-primary/40 px-6 py-3 font-mono text-primary transition-colors hover:bg-primary/10"
+          href={import.meta.env.BASE_URL}
+          className="mt-9 inline-flex items-center rounded-full bg-primary px-6 py-3 text-[17px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
         >
-          cd ~/home
+          Back to home
         </a>
       </div>
     </div>

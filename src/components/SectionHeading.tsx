@@ -1,16 +1,20 @@
 type Props = {
-  index: string;
   title: string;
+  /** Optional one-line intro under the headline. */
+  subtitle?: string;
 };
 
-export function SectionHeading({ index, title }: Props) {
+export function SectionHeading({ title, subtitle }: Props) {
   return (
-    <div className="mb-10 flex items-center gap-4">
-      <h2 className="flex items-baseline gap-3 text-2xl font-bold sm:text-3xl">
-        <span className="font-mono text-lg text-primary">{index}.</span>
+    <div className="mb-12 sm:mb-14">
+      <h2 className="text-4xl font-bold tracking-[-0.035em] sm:text-5xl">
         {title}
       </h2>
-      <span className="h-px flex-1 bg-border" />
+      {subtitle && (
+        <p className="mt-3 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }
