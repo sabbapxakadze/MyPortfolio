@@ -26,7 +26,7 @@ export const about = {
   // A few short paragraphs. Keep it human.
   paragraphs: [
     "I'm a Full-Stack Engineer and Computer Science student at Kutaisi International University. I work across the whole stack – designing and building REST APIs in ASP.NET Core and Node.js, and crafting responsive React frontends with TypeScript.",
-    "At DevsData LLC I work across the frontend and backend of production applications, building internal tools and automations and tracing issues across the full stack. Alongside it, until August 2026, I worked at BeneNAV, where I shipped features across an employee-management platform and its backend API, built shared TypeScript packages and Storybook components, and integrated real-time services.",
+    "At DevsData LLC I work across the frontend and backend of production applications, building and validating n8n and Make automations, integrating the HubSpot API and tracing issues across the full stack. Alongside it, until August 2026, I worked at BeneNAV, where I shipped features across an employee-management platform and its backend API, built shared TypeScript packages and Storybook components, and integrated real-time services.",
   ],
 };
 
@@ -59,6 +59,7 @@ export const experience: Experience[] = [
       "Built and published an internal shared TypeScript models package consumed by both the frontend dashboard and backend API, keeping data types consistent across the fullstack codebase and reducing duplication.",
       "Designed and developed reusable components for the company's Storybook-based UI component library, translating Figma designs into production-ready, cross-platform components.",
       "Integrated real-time features using an Elixir/Phoenix-based chat service for live messaging/notifications.",
+      "Created and configured custom Claude Skills and AI agents to support development workflows, automate repetitive tasks, and provide task-specific context and instructions.",
       "Diagnosed and fixed bugs on the company's marketing site (React, Vite, TypeScript, Tailwind CSS), improving stability and UX.",
     ],
   },
@@ -67,14 +68,26 @@ export const experience: Experience[] = [
     role: "Fullstack Developer",
     period: "Jan 2024 – Present",
     current: true,
-    stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Git / GitLab"],
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Supabase",
+      "n8n",
+      "Make",
+      "HubSpot API",
+      "Git / GitLab",
+    ],
     highlights: [
-      "Executed end-to-end development across frontend and backend, delivering features, integrations, and improvements for production applications.",
-      "Designed and implemented internal tools and server-side automations for data transformation and validation, reducing a 2–3 hour manual process to a quick check.",
+      "Executed e2e development across frontend and backend, delivering features, integrations, and fixes for production applications.",
+      "Collaborated with developers to build, configure, test, and validate n8n and Make automations, reviewing workflows, identifying issues, and coordinating team checks to ensure they behaved as expected.",
       "Worked across multiple application layers, tracing issues from React UI behavior through API requests and backend logic to identify and fix root causes.",
       "Develop and refactor reusable React/TypeScript components, improving maintainability and consistency across high-traffic pages.",
-      "Debugged and resolved frontend, backend, and API issues, using systematic testing and investigation to identify root causes and prevent regressions.",
-      "Worked with Node.js, Express, MongoDB, Git/GitLab, and third-party APIs while managing changes through staging, code reviews, and production deployments.",
+      "Debugged and resolved frontend, backend, and API issues, using systematic testing and investigation to identify root causes.",
+      "Integrated with the HubSpot API to retrieve and update contacts and deals, manage client information, and track customer interactions and follow-ups.",
+      "Worked with Node.js, Express, MongoDB, Supabase, Git/GitLab, and third-party APIs while managing tasks in ClickUp and coordinating changes through staging, code reviews, and production deployments.",
     ],
   },
 ];
@@ -241,6 +254,7 @@ export const skills: { group: string; items: string[] }[] = [
       "PostgreSQL",
       "MongoDB",
       "Drizzle ORM",
+      "Supabase",
       "Scylla",
       "Docker",
       "Docker Compose",
@@ -250,17 +264,17 @@ export const skills: { group: string; items: string[] }[] = [
     ],
   },
   {
-    group: "Testing & Tools",
+    group: "Development Tools",
     items: [
-      "Playwright",
-      "Jest",
-      "Zod",
       "Git",
       "GitHub",
       "GitLab",
       "Postman",
+      "HubSpot",
       "Swagger",
       "Figma",
+      "ClickUp",
+      "Slack",
     ],
   },
   {
@@ -268,9 +282,12 @@ export const skills: { group: string; items: string[] }[] = [
     items: [
       "Claude Code",
       "OpenAI Codex",
-      "MCP server development",
+      "Custom Claude Skills",
+      "MCP Server Development",
       "RAG",
-      "LLM integration (Cloudflare Workers, Llama)",
+      "LLM Integration (Llama, Cloudflare Workers AI)",
+      "n8n",
+      "Make",
     ],
   },
 ];
