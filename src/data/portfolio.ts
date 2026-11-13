@@ -6,12 +6,11 @@
 export const profile = {
   name: "Saba Pkhakadze",
   role: "Full-Stack Engineer",
-  // Hero headline: the first part is bold, the second is muted.
-  headline: "Full-stack engineer",
-  headlineMuted: "who ships.",
+  // Hero headline.
+  headline: "Full-stack engineer.",
   // Short line shown under the headline in the hero.
   tagline:
-    "I build web products end to end with React, Node.js and PostgreSQL. Currently at DevsData.",
+    "I build web products end to end, from the database to the interface. Currently at DevsData.",
   // Numbers shown under the hero. Keep these in sync with the CV.
   stats: [
     { value: "19 ms", label: "sprint analytics, down from 3.9 s" },
@@ -47,7 +46,8 @@ export type Proof = {
   /** A big word shown instead of a number. */
   text?: string;
   description: string;
-  tags: string[];
+  /** Skill names (exactly as in `skills`) this tile lights up in the table. */
+  uses: string[];
 };
 
 // Facts only from the CV (FlowDesc.app). Keep in sync with the CV.
@@ -57,28 +57,36 @@ export const proof: Proof[] = [
     count: { from: 3900, to: 19, suffix: " ms" },
     description:
       "Sprint analytics cut from 3.9 s to 19 ms at 20,000 issues. Project deletion went from 9 s to 0.6 s.",
-    tags: ["PostgreSQL", "Drizzle"],
+    uses: ["PostgreSQL", "Drizzle ORM"],
   },
   {
     title: "Tested.",
     count: { from: 0, to: 700, suffix: "+" },
     description:
       "Unit and API tests, plus a 280+ test Playwright suite running in CI across 4 parallel shards.",
-    tags: ["Playwright", "Jest", "GitHub Actions"],
+    uses: ["GitHub Actions", "CI/CD"],
   },
   {
     title: "Secure.",
     text: "Argon2id",
     description:
       "JWT with rotating refresh tokens, Google and GitHub sign-in, rate limiting and a strict CSP.",
-    tags: ["JWT", "CSP", "Rate limiting"],
+    uses: ["Node.js", "Express.js"],
   },
   {
     title: "AI-ready.",
     text: "MCP",
     description:
       "A published MCP server on npm with provenance, and an in-app RAG assistant with cited answers and prompt-injection defenses.",
-    tags: ["MCP", "RAG", "Claude Code"],
+    uses: [
+      "Claude Code",
+      "OpenAI Codex",
+      "Custom Claude Skills",
+      "MCP Server Development",
+      "RAG",
+      "LLM Integration (Llama, Cloudflare Workers AI)",
+      "Postgres full-text search",
+    ],
   },
 ];
 

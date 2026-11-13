@@ -22,7 +22,6 @@ export function Hero() {
           style={delay(80)}
         >
           {profile.headline}
-          <span className="text-muted-foreground"> {profile.headlineMuted}</span>
         </h1>
 
         <p

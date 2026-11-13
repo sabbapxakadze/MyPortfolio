@@ -140,29 +140,7 @@
     }
   }
 
-  /* Slow, endless strip of tools (content is duplicated, so -50% loops) */
-  .marquee-track {
-    animation: marquee 70s linear infinite;
-  }
-  .marquee-track:hover {
-    animation-play-state: paused;
-  }
-  .marquee-mask {
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  }
-
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none !important;
-    }
-
     *,
     *::before,
     *::after {
